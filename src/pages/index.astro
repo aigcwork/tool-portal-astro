@@ -1,0 +1,197 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import ToolGrid from '@/components/ToolGrid.astro';
+import { getAllTools, getFeaturedTools, getToolStats } from '@/utils/toolData';
+
+const allTools = getAllTools();
+const featuredTools = getFeaturedTools();
+const stats = getToolStats();
+
+const pageTitle = '工具门户网站';
+const pageDescription = '精选的在线工具集合，提升您的工作效率';
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <div id="main-content" tabindex="-1">
+  <main class="main">
+    <!-- 头部区域 -->
+    <header class="header">
+      <div class="container">
+        <div class="header__content">
+          <h1 class="header__title">{pageTitle}</h1>
+          <p class="header__description">{pageDescription}</p>
+          
+          <!-- 统计信息 -->
+          <div class="stats">
+            <div class="stats__item">
+              <span class="stats__number">{stats.total}</span>
+              <span class="stats__label">工具总数</span>
+            </div>
+            <div class="stats__item">
+              <span class="stats__number">{stats.featured}</span>
+              <span class="stats__label">推荐工具</span>
+            </div>
+            <div class="stats__item">
+              <span class="stats__number">{stats.categories.length}</span>
+              <span class="stats__label">分类</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 推荐工具区域 -->
+    {featuredTools.length > 0 && (
+      <section class="section">
+        <div class="container">
+          <h2 class="section__title">⭐ 推荐工具</h2>
+          <p class="section__description">我们精选的优质工具</p>
+          <ToolGrid tools={featuredTools} columns="auto" gap="lg" />
+        </div>
+      </section>
+    )}
+
+    <!-- 所有工具区域 -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section__title">🛠️ 所有工具</h2>
+        <p class="section__description">浏览完整的工具集合</p>
+        <ToolGrid tools={allTools} columns="auto" gap="md" />
+      </div>
+    </section>
+  </main>
+  </div>
+</Layout>
+
+<style>
+  .main {
+    min-height: 100vh;
+  }
+
+  .header {
+    padding: var(--space-3xl) 0 var(--space-2xl);
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+    border-bottom: 1px solid var(--border-primary);
+  }
+
+  .container {
+    max-width: var(--container-xl);
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+  }
+
+  .header__content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .header__title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--space-md);
+    line-height: 1.2;
+  }
+
+  .header__description {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-2xl);
+    line-height: 1.6;
+  }
+
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-xl);
+    margin-top: var(--space-xl);
+  }
+
+  .stats__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .stats__number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1;
+  }
+
+  .stats__label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  .section {
+    padding: var(--space-3xl) 0;
+  }
+
+  .section__title {
+    font-size: 1.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-sm);
+    text-align: center;
+  }
+
+  .section__description {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-2xl);
+    text-align: center;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .header {
+      padding: var(--space-2xl) 0 var(--space-xl);
+    }
+
+    .stats {
+      gap: var(--space-lg);
+    }
+
+    .stats__number {
+      font-size: 1.5rem;
+    }
+
+    .section {
+      padding: var(--space-2xl) 0;
+    }
+
+    .section__title {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .container {
+      padding: 0 var(--space-md);
+    }
+
+    .stats {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+    }
+
+    .stats__item {
+      flex: 1;
+      min-width: 80px;
+    }
+  }
+
+  /* Dark mode adjustments */
+  [data-theme="dark"] .header {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  }
+</style>

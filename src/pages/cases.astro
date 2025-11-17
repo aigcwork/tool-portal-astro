@@ -1,0 +1,451 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const caseStudies = [
+  {
+    id: 1,
+    title: "前端开发效率提升300%",
+    category: "前端开发",
+    company: "科技创新公司",
+    description: "通过使用我们的工具集合，前端团队将项目交付时间从3个月缩短到1个月",
+    tools: ["React 组件库", "CSS 生成器", "代码格式化工具"],
+    results: [
+      "开发效率提升300%",
+      "代码质量显著提升",
+      "团队协作更加顺畅"
+    ],
+    testimonial: {
+      author: "张明",
+      role: "前端技术负责人",
+      content: "这些工具彻底改变了我们的开发流程，现在我们可以更快地交付高质量的产品。"
+    },
+    metrics: {
+      efficiency: "+300%",
+      quality: "+85%",
+      satisfaction: "95%"
+    }
+  },
+  {
+    id: 2,
+    title: "设计师工作流程优化",
+    category: "设计工具",
+    company: "创意设计工作室",
+    description: "设计师团队通过集成多种设计工具，大幅提升了创意产出效率",
+    tools: ["配色方案生成器", "字体搭配工具", "图标库管理"],
+    results: [
+      "设计效率提升250%",
+      "客户满意度提高",
+      "创意质量显著改善"
+    ],
+    testimonial: {
+      author: "李设计师",
+      role: "首席设计师",
+      content: "工具让我们的创意过程更加流畅，客户对我们的设计方案赞不绝口。"
+    },
+    metrics: {
+      efficiency: "+250%",
+      creativity: "+120%",
+      satisfaction: "98%"
+    }
+  },
+  {
+    id: 3,
+    title: "数据分析师生产力革命",
+    category: "数据分析",
+    company: "数据驱动企业",
+    description: "数据分析团队利用工具集合，将数据处理时间缩短了80%",
+    tools: ["JSON 格式化", "数据可视化", "正则表达式测试"],
+    results: [
+      "数据处理速度提升5倍",
+      "分析准确性提高",
+      "报告生成自动化"
+    ],
+    testimonial: {
+      author: "王数据",
+      role: "高级数据分析师",
+      content: "以前需要几个小时的数据处理工作，现在几分钟就能完成，太神奇了！"
+    },
+    metrics: {
+      speed: "+500%",
+      accuracy: "+90%",
+      automation: "80%"
+    }
+  }
+];
+
+const userStories = [
+  {
+    id: 1,
+    title: "个人开发者的救星",
+    user: "独立开发者小王",
+    scenario: "个人项目开发",
+    challenge: "作为独立开发者，需要处理前端、设计、测试等多个环节",
+    solution: "使用工具网站的20+种开发工具，一站式解决所有技术需求",
+    outcome: "项目开发周期缩短60%，产品质量大幅提升",
+    favoriteTools: ["代码压缩工具", "图片优化器", "API测试工具"],
+    timeSaved: "每周节省15小时"
+  },
+  {
+    id: 2,
+    title: "学生团队的协作神器",
+    user: "大学项目团队",
+    scenario: "学术项目开发",
+    challenge: "团队成员技术水平参差不齐，需要统一标准和工具",
+    solution: "使用格式化、验证、转换等工具确保代码质量和一致性",
+    outcome: "项目获得优秀评级，团队成员技能显著提升",
+    favoriteTools: ["代码格式化", "Git命令生成", "文档生成器"],
+    timeSaved: "每周节省12小时"
+  },
+  {
+    id: 3,
+    title: "远程办公的效率保障",
+    user: "远程工作者小李",
+    scenario: "居家办公环境",
+    challenge: "远程工作缺乏技术支持，遇到问题难以快速解决",
+    solution: "通过在线工具快速解决技术问题，无需安装复杂软件",
+    outcome: "工作效率提升，能够更好地平衡工作与生活",
+    favoriteTools: ["在线编辑器", "文件转换器", "屏幕录制工具"],
+    timeSaved: "每天节省2小时"
+  }
+];
+
+const industryApplications = [
+  {
+    industry: "教育培训",
+    description: "在线教学工具支持",
+    applications: [
+      "代码教学演示工具",
+      "在线编程练习平台",
+      "学生作业评估系统"
+    ],
+    benefits: [
+      "提升教学效果",
+      "降低技术门槛",
+      "增强学生参与度"
+    ]
+  },
+  {
+    industry: "金融服务",
+    description: "数据处理与安全保障",
+    applications: [
+      "数据加密工具",
+      "财务报表生成",
+      "风险评估计算器"
+    ],
+    benefits: [
+      "提高数据安全性",
+      "加快处理速度",
+      "降低操作风险"
+    ]
+  },
+  {
+    industry: "医疗健康",
+    description: "数据管理与分析",
+    applications: [
+      "医疗数据格式化",
+      "统计图表生成",
+      "报告文档处理"
+    ],
+    benefits: [
+      "提高数据准确性",
+      "简化工作流程",
+      "增强合规性"
+    ]
+  },
+  {
+    industry: "电商零售",
+    description: "商品管理与营销",
+    applications: [
+      "图片批量处理",
+      "商品描述生成",
+      "营销数据分析"
+    ],
+    benefits: [
+      "提升商品展示效果",
+      "优化营销策略",
+      "提高转化率"
+    ]
+  }
+];
+---
+
+<Layout title="案例与示例 - 工具网站">
+  <main class="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-blue-600 to-purple-700 text-white py-20">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-4xl md:text-6xl font-bold mb-6">
+            成功案例与用户故事
+          </h1>
+          <p class="text-xl md:text-2xl opacity-90 mb-8">
+            了解真实用户如何通过我们的工具实现效率提升和业务增长
+          </p>
+          <div class="flex flex-wrap justify-center gap-4 text-sm">
+            <span class="bg-white/20 px-4 py-2 rounded-full">50,000+ 活跃用户</span>
+            <span class="bg-white/20 px-4 py-2 rounded-full">300+ 企业客户</span>
+            <span class="bg-white/20 px-4 py-2 rounded-full">95% 用户满意度</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              成功案例研究
+            </h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300">
+              深入了解企业如何通过我们的工具实现数字化转型
+            </p>
+          </div>
+
+          <div class="space-y-12">
+            {caseStudies.map((caseStudy) => (
+              <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 md:p-12">
+                <div class="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <div class="flex items-center gap-3 mb-4">
+                      <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm font-medium">
+                        {caseStudy.category}
+                      </span>
+                      <span class="text-gray-500 dark:text-gray-400 text-sm">{caseStudy.company}</span>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                      {caseStudy.title}
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+                      {caseStudy.description}
+                    </p>
+                    
+                    <div class="mb-6">
+                      <h4 class="font-semibold text-gray-900 dark:text-white mb-3">使用的工具：</h4>
+                      <div class="flex flex-wrap gap-2">
+                        {caseStudy.tools.map((tool) => (
+                          <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full text-sm">
+                            {tool}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-4 mb-6">
+                      {Object.entries(caseStudy.metrics).map(([key, value]) => (
+                        <div class="text-center">
+                          <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                            {value}
+                          </div>
+                          <div class="text-sm text-gray-500 dark:text-gray-400">
+                            {key === 'efficiency' ? '效率' : 
+                             key === 'quality' ? '质量' :
+                             key === 'satisfaction' ? '满意度' :
+                             key === 'speed' ? '速度' :
+                             key === 'creativity' ? '创意' :
+                             key === 'accuracy' ? '准确性' :
+                             key === 'automation' ? '自动化' : key}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 mb-6">
+                      <h4 class="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                        <span class="text-green-500">✔️</span>
+                        取得的成果
+                      </h4>
+                      <ul class="space-y-2">
+                        {caseStudy.results.map((result) => (
+                          <li class="flex items-start gap-2">
+                            <span class="text-green-500 mt-0.5 flex-shrink-0">✔️</span>
+                            <span class="text-gray-700 dark:text-gray-300">{result}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6">
+                      <div class="flex items-start gap-3">
+                        <span class="text-blue-600 dark:text-blue-400 flex-shrink-0 mt-1">❝</span>
+                        <div>
+                          <p class="text-gray-700 dark:text-gray-300 italic mb-3">
+                            "{caseStudy.testimonial.content}"
+                          </p>
+                          <div class="text-sm">
+                            <div class="font-semibold text-gray-900 dark:text-white">
+                              {caseStudy.testimonial.author}
+                            </div>
+                            <div class="text-gray-500 dark:text-gray-400">
+                              {caseStudy.testimonial.role}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- User Stories Section -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-800">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              用户真实故事
+            </h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300">
+              听听我们用户的亲身经历，了解工具如何改变他们的工作方式
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {userStories.map((story) => (
+              <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg p-6">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
+                    {story.user.charAt(story.user.length - 1)}
+                  </div>
+                  <div>
+                    <div class="font-semibold text-gray-900 dark:text-white">
+                      {story.user}
+                    </div>
+                    <div class="text-sm text-gray-500 dark:text-gray-400">
+                      {story.scenario}
+                    </div>
+                  </div>
+                </div>
+
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3">
+                  {story.title}
+                </h3>
+
+                <div class="space-y-3 mb-4">
+                  <div>
+                    <span class="text-sm font-medium text-gray-700 dark:text-gray-300">面临挑战：</span>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">{story.challenge}</p>
+                  </div>
+                  <div>
+                    <span class="text-sm font-medium text-gray-700 dark:text-gray-300">解决方案：</span>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">{story.solution}</p>
+                  </div>
+                  <div>
+                    <span class="text-sm font-medium text-gray-700 dark:text-gray-300">最终成果：</span>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">{story.outcome}</p>
+                  </div>
+                </div>
+
+                <div class="border-t dark:border-gray-600 pt-4">
+                  <div class="text-sm text-gray-700 dark:text-gray-300 mb-2">
+                    <strong>最爱工具：</strong>
+                  </div>
+                  <div class="flex flex-wrap gap-1">
+                    {story.favoriteTools.map((tool) => (
+                      <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded text-xs">
+                        {tool}
+                      </span>
+                    ))}
+                  </div>
+                  <div class="mt-3 text-sm font-semibold text-green-600 dark:text-green-400">
+                    节省时间：{story.timeSaved}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Industry Applications Section -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              行业应用案例
+            </h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300">
+              了解不同行业如何应用我们的工具解决实际问题
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            {industryApplications.map((industry) => (
+              <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-blue-600 rounded-lg flex items-center justify-center text-white">
+                    <span class="text-xl">⭐</span>
+                  </div>
+                  <div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white">
+                      {industry.industry}
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                      {industry.description}
+                    </p>
+                  </div>
+                </div>
+
+                <div class="mb-6">
+                  <h4 class="font-semibold text-gray-900 dark:text-white mb-3">应用场景：</h4>
+                  <ul class="space-y-2">
+                    {industry.applications.map((app) => (
+                      <li class="flex items-center gap-2">
+                        <div class="w-2 h-2 bg-blue-500 rounded-full" />
+                        <span class="text-gray-700 dark:text-gray-300">{app}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 class="font-semibold text-gray-900 dark:text-white mb-3">获得收益：</h4>
+                  <div class="space-y-2">
+                        {industry.benefits.map((benefit) => (
+                      <div class="flex items-center gap-2">
+                        <span class="text-green-500 flex-shrink-0">✔️</span>
+                        <span class="text-gray-700 dark:text-gray-300 text-sm">{benefit}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="py-16 bg-gradient-to-r from-blue-600 to-purple-700 text-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">
+            开始您的成功故事
+          </h2>
+          <p class="text-xl opacity-90 mb-8">
+            加入50,000+用户的行列，体验工具带来的效率提升
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+              立即开始
+            </a>
+            <a href="/guide" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
+              查看使用指南
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

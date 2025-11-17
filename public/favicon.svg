@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="6" fill="#3b82f6"/>
+  <g transform="translate(8,8)">
+    <path d="M8 2L14 8L8 14L2 8L8 2Z" fill="white" opacity="0.9"/>
+    <path d="M8 6L10 8L8 10L6 8L8 6Z" fill="white"/>
+    <circle cx="8" cy="8" r="1" fill="#3b82f6"/>
+  </g>
+  <text x="16" y="26" text-anchor="middle" fill="white" font-size="6" font-weight="bold" font-family="Arial">工具</text>
+</svg>

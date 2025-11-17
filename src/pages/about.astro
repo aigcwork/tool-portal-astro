@@ -1,0 +1,235 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+const pageTitle = '关于 - 工具门户网站';
+const pageDescription = '了解工具门户网站的使命和愿景';
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <main class="about-page">
+    <div class="container">
+      <header class="page-header">
+        <h1 class="page-title">{pageTitle}</h1>
+        <p class="page-description">{pageDescription}</p>
+      </header>
+
+      <div class="content-grid">
+        <section class="content-section">
+          <h2 class="section-title">我们的使命</h2>
+          <p class="section-text">
+            工具门户网站致力于收集和整理最优质的在线工具，帮助用户提高工作效率，
+            发现新的技术解决方案，并促进数字化工具的普及和使用。
+          </p>
+        </section>
+
+        <section class="content-section">
+          <h2 class="section-title">我们的特色</h2>
+          <ul class="feature-list" role="list">
+            <li class="feature-item">
+              <span class="feature-icon">⚡</span>
+              <div class="feature-content">
+                <h3 class="feature-title">高性能</h3>
+                <p class="feature-description">基于Astro框架，提供极速的页面加载体验</p>
+              </div>
+            </li>
+            <li class="feature-item">
+              <span class="feature-icon">📱</span>
+              <div class="feature-content">
+                <h3 class="feature-title">响应式设计</h3>
+                <p class="feature-description">完美适配各种设备屏幕尺寸</p>
+              </div>
+            </li>
+            <li class="feature-item">
+              <span class="feature-icon">🌙</span>
+              <div class="feature-content">
+                <h3 class="feature-title">深色模式</h3>
+                <p class="feature-description">支持深色和浅色主题切换</p>
+              </div>
+            </li>
+            <li class="feature-item">
+              <span class="feature-icon">♿</span>
+              <div class="feature-content">
+                <h3 class="feature-title">无障碍访问</h3>
+                <p class="feature-description">完整的ARIA标签和键盘导航支持</p>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="content-section">
+          <h2 class="section-title">联系我们</h2>
+          <p class="section-text">
+            如果您有任何建议或想要提交新的工具，欢迎通过以下方式联系我们：
+          </p>
+          <div class="contact-info">
+            <p class="contact-item">
+              <strong>邮箱：</strong>
+              <a href="mailto:contact@toolportal.com" class="contact-link">
+                contact@toolportal.com
+              </a>
+            </p>
+            <p class="contact-item">
+              <strong>GitHub：</strong>
+              <a href="https://github.com/toolportal/astro" class="contact-link" target="_blank" rel="noopener noreferrer">
+                github.com/toolportal/astro
+              </a>
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .about-page {
+    min-height: 100vh;
+    padding: var(--space-3xl) 0;
+  }
+
+  .container {
+    max-width: var(--container-lg);
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+  }
+
+  .page-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--space-md);
+    line-height: 1.2;
+  }
+
+  .page-description {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .content-grid {
+    display: grid;
+    gap: var(--space-2xl);
+  }
+
+  .content-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    padding: var(--space-2xl);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-lg);
+  }
+
+  .section-text {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+
+  .feature-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .feature-content {
+    flex: 1;
+  }
+
+  .feature-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 var(--space-xs) 0;
+  }
+
+  .feature-description {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .contact-info {
+    margin-top: var(--space-lg);
+  }
+
+  .contact-item {
+    margin: var(--space-sm) 0;
+    font-size: 1rem;
+    color: var(--text-secondary);
+  }
+
+  .contact-link {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--transition-fast);
+  }
+
+  .contact-link:hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .about-page {
+      padding: var(--space-2xl) 0;
+    }
+
+    .content-section {
+      padding: var(--space-lg);
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+    }
+
+    .feature-item {
+      gap: var(--space-sm);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .container {
+      padding: 0 var(--space-md);
+    }
+
+    .feature-icon {
+      font-size: 1.25rem;
+    }
+
+    .feature-title {
+      font-size: 1rem;
+    }
+  }
+</style>

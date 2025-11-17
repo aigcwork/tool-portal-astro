@@ -1,0 +1,147 @@
+---
+import Layout from '@/layouts/Layout.astro';
+---
+
+<Layout title="无障碍声明 - 工具门户网站" description="我们致力于提供无障碍的网站体验">
+  <div class="accessibility-page">
+    <div class="container">
+      <header class="page-header">
+        <h1 class="page-title">无障碍声明</h1>
+        <p class="page-description">我们致力于让所有人都能访问我们的网站</p>
+      </header>
+
+      <div class="content">
+        <section class="accessibility-section">
+          <h2>我们的承诺</h2>
+          <p>工具门户网站致力于让所有人，包括残障人士，都能访问和使用我们的网站。我们相信每个人都应该能够轻松访问在线工具和资源。</p>
+        </section>
+
+        <section class="accessibility-section">
+          <h2>无障碍功能</h2>
+          <p>我们的网站包含以下无障碍功能：</p>
+          <ul class="feature-list">
+            <li>支持键盘导航</li>
+            <li>清晰的标题结构</li>
+            <li>适当的颜色对比度</li>
+            <li>图像的替代文本</li>
+            <li>表单标签和说明</li>
+            <li>响应式设计</li>
+            <li>屏幕阅读器支持</li>
+          </ul>
+        </section>
+
+        <section class="accessibility-section">
+          <h2>键盘导航</h2>
+          <p>您可以使用键盘上的Tab键在页面元素之间导航。使用Enter键激活链接和按钮。</p>
+        </section>
+
+        <section class="accessibility-section">
+          <h2>联系我们</h2>
+          <p>如果您在访问我们的网站时遇到任何困难，或者有无障碍相关的建议，请通过以下方式联系我们：</p>
+          <p>电子邮件：contact@toolportal.com</p>
+        </section>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .accessibility-page {
+    min-height: 60vh;
+    padding: var(--space-2xl) 0;
+  }
+
+  .container {
+    max-width: var(--container-lg);
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 var(--space-md) 0;
+  }
+
+  .page-description {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .accessibility-section {
+    margin-bottom: var(--space-xl);
+  }
+
+  .accessibility-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 var(--space-md) 0;
+  }
+
+  .accessibility-section p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin: 0 0 var(--space-sm) 0;
+  }
+
+  .feature-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-sm);
+  }
+
+  .feature-list li {
+    background: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    color: var(--text-secondary);
+    position: relative;
+    padding-left: var(--space-xl);
+  }
+
+  .feature-list li::before {
+    content: '✓';
+    position: absolute;
+    left: var(--space-md);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-primary);
+    font-weight: bold;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 var(--space-md);
+    }
+
+    .page-title {
+      font-size: 2rem;
+    }
+
+    .page-description {
+      font-size: 1rem;
+    }
+
+    .feature-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

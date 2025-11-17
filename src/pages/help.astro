@@ -1,0 +1,173 @@
+---
+import Layout from '@/layouts/Layout.astro';
+---
+
+<Layout title="帮助中心 - 工具门户网站" description="常见问题和使用指南">
+  <div class="help-page">
+    <div class="container">
+      <header class="page-header">
+        <h1 class="page-title">帮助中心</h1>
+        <p class="page-description">找到您需要的答案</p>
+      </header>
+
+      <div class="content">
+        <section class="help-section">
+          <h2>常见问题</h2>
+          
+          <div class="faq-item">
+            <h3>如何使用网站上的工具？</h3>
+            <p>点击任意工具卡片，系统将在新标签页中打开工具的官方网站。您可以在那里直接使用该工具。</p>
+          </div>
+
+          <div class="faq-item">
+            <h3>工具是否免费？</h3>
+            <p>我们收录的工具大多数是免费的，但某些工具可能有付费功能。具体费用请参考各工具的官方网站。</p>
+          </div>
+
+          <div class="faq-item">
+            <h3>如何切换深色/浅色主题？</h3>
+            <p>点击页面右上角的月亮/太阳图标即可切换主题。您的选择将被保存，下次访问时自动应用。</p>
+          </div>
+
+          <div class="faq-item">
+            <h3>如何推荐新工具？</h3>
+            <p>您可以通过我们的反馈邮箱 feedback@toolportal.com 推荐新的工具。我们会评估并考虑添加到网站中。</p>
+          </div>
+        </section>
+
+        <section class="help-section">
+          <h2>使用指南</h2>
+          
+          <div class="guide-item">
+            <h3>浏览工具</h3>
+            <p>您可以通过首页查看所有工具，或通过分类页面按类别浏览。每个工具都有详细的描述和标签。</p>
+          </div>
+
+          <div class="guide-item">
+            <h3>搜索功能</h3>
+            <p>使用页面顶部的搜索框可以快速找到特定工具。您可以按名称、描述或标签进行搜索。</p>
+          </div>
+
+          <div class="guide-item">
+            <h3>收藏工具</h3>
+            <p>虽然目前没有内置的收藏功能，但您可以使用浏览器的书签功能保存常用的工具。</p>
+          </div>
+        </section>
+
+        <section class="help-section">
+          <h2>联系支持</h2>
+          <p>如果您有其他问题或需要技术支持，请通过以下方式联系我们：</p>
+          <div class="contact-info">
+            <p><strong>邮箱：</strong> support@toolportal.com</p>
+            <p><strong>工作时间：</strong> 周一至周五 9:00-18:00</p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .help-page {
+    min-height: 60vh;
+    padding: var(--space-2xl) 0;
+  }
+
+  .container {
+    max-width: var(--container-lg);
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 var(--space-md) 0;
+  }
+
+  .page-description {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .help-section {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .help-section h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 var(--space-lg) 0;
+    text-align: center;
+  }
+
+  .faq-item, .guide-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-md);
+  }
+
+  .faq-item h3, .guide-item h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 var(--space-sm) 0;
+  }
+
+  .faq-item p, .guide-item p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .contact-info {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    margin-top: var(--space-md);
+  }
+
+  .contact-info p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin: 0 0 var(--space-sm) 0;
+  }
+
+  .contact-info p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 var(--space-md);
+    }
+
+    .page-title {
+      font-size: 2rem;
+    }
+
+    .page-description {
+      font-size: 1rem;
+    }
+
+    .faq-item, .guide-item {
+      padding: var(--space-md);
+    }
+  }
+</style>

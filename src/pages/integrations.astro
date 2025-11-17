@@ -1,0 +1,720 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const apiDocumentation = {
+  baseUrl: "https://api.toolwebsite.com/v1",
+  authentication: {
+    method: "Bearer Token",
+    header: "Authorization: Bearer YOUR_API_KEY",
+    description: "所有API请求都需要在请求头中包含有效的API密钥"
+  },
+  endpoints: [
+    {
+      name: "获取工具列表",
+      method: "GET",
+      path: "/tools",
+      description: "获取所有可用工具的列表",
+      parameters: [
+        { name: "category", type: "string", required: false, description: "工具分类" },
+        { name: "tag", type: "string", required: false, description: "工具标签" },
+        { name: "limit", type: "number", required: false, description: "返回数量限制" }
+      ],
+      response: "返回工具列表数组"
+    },
+    {
+      name: "获取工具详情",
+      method: "GET",
+      path: "/tools/{id}",
+      description: "获取特定工具的详细信息",
+      parameters: [
+        { name: "id", type: "string", required: true, description: "工具ID" }
+      ],
+      response: "返回工具详情对象"
+    },
+    {
+      name: "使用工具",
+      method: "POST",
+      path: "/tools/{id}/execute",
+      description: "执行特定工具的功能",
+      parameters: [
+        { name: "id", type: "string", required: true, description: "工具ID" },
+        { name: "input", type: "object", required: true, description: "工具输入参数" }
+      ],
+      response: "返回工具执行结果"
+    }
+  ]
+};
+
+const sdkDownloads = [
+  {
+    id: 1,
+    name: "JavaScript SDK",
+    description: "适用于Node.js和浏览器环境的完整SDK",
+    version: "v2.1.0",
+    downloads: "15,000+",
+    size: "125KB",
+    language: "JavaScript/TypeScript",
+    icon: "🟨",
+    features: ["Promise支持", "TypeScript定义", "浏览器兼容", "错误处理"],
+    installCommand: "npm install toolweb-sdk",
+    documentation: "https://docs.toolwebsite.com/sdks/javascript"
+  },
+  {
+    id: 2,
+    name: "Python SDK",
+    description: "Python开发者专用的SDK包",
+    version: "v1.8.2",
+    downloads: "8,500+",
+    size: "89KB",
+    language: "Python",
+    icon: "🐍",
+    features: ["异步支持", "虚拟环境兼容", "完整文档", "示例代码"],
+    installCommand: "pip install toolweb-sdk",
+    documentation: "https://docs.toolwebsite.com/sdks/python"
+  },
+  {
+    id: 3,
+    name: "PHP SDK",
+    description: "PHP项目集成的专用SDK",
+    version: "v1.5.1",
+    downloads: "5,200+",
+    size: "156KB",
+    language: "PHP",
+    icon: "🐘",
+    features: ["Composer支持", "PSR标准", "自动加载", "异常处理"],
+    installCommand: "composer require toolweb/sdk",
+    documentation: "https://docs.toolwebsite.com/sdks/php"
+  },
+  {
+    id: 4,
+    name: "Go SDK",
+    description: "Go语言开发的高性能SDK",
+    version: "v1.3.0",
+    downloads: "3,800+",
+    size: "234KB",
+    language: "Go",
+    icon: "🔵",
+    features: ["并发安全", "模块支持", "性能优化", "内存管理"],
+    installCommand: "go get github.com/toolweb/sdk-go",
+    documentation: "https://docs.toolwebsite.com/sdks/go"
+  }
+];
+
+const plugins = [
+  {
+    id: 1,
+    name: "VS Code扩展",
+    description: "在VS Code编辑器中直接使用工具功能",
+    version: "v1.2.0",
+    installs: "12,000+",
+    rating: 4.8,
+    icon: "💻",
+    features: ["命令面板集成", "快捷键支持", "结果预览", "多语言支持"],
+    installUrl: "https://marketplace.visualstudio.com/items?itemName=toolweb.vscode-extension",
+    documentation: "https://docs.toolwebsite.com/plugins/vscode"
+  },
+  {
+    id: 2,
+    name: "Chrome浏览器插件",
+    description: "浏览器内快速访问工具功能",
+    version: "v0.9.5",
+    installs: "25,000+",
+    rating: 4.6,
+    icon: "🌐",
+    features: ["右键菜单", "快速访问", "离线缓存", "同步设置"],
+    installUrl: "https://chrome.google.com/webstore/detail/toolweb-extension",
+    documentation: "https://docs.toolwebsite.com/plugins/chrome"
+  },
+  {
+    id: 3,
+    name: "Slack集成",
+    description: "在Slack工作区中使用工具命令",
+    version: "v1.0.3",
+    installs: "3,200+",
+    rating: 4.7,
+    icon: "💬",
+    features: ["斜杠命令", "结果分享", "团队协作", "权限管理"],
+    installUrl: "https://slack.com/apps/toolweb-integration",
+    documentation: "https://docs.toolwebsite.com/plugins/slack"
+  },
+  {
+    id: 4,
+    name: "WordPress插件",
+    description: "WordPress网站集成的工具插件",
+    version: "v2.0.1",
+    installs: "8,900+",
+    rating: 4.5,
+    icon: "🔧",
+    features: ["短代码支持", "古腾堡块", "主题集成", "缓存优化"],
+    installUrl: "https://wordpress.org/plugins/toolweb-integration/",
+    documentation: "https://docs.toolwebsite.com/plugins/wordpress"
+  }
+];
+
+const thirdPartyIntegrations = [
+  {
+    id: 1,
+    name: "GitHub Actions",
+    description: "在CI/CD流程中集成工具功能",
+    category: "开发工具",
+    difficulty: "简单",
+    timeRequired: "15分钟",
+    icon: "🐙",
+    benefits: ["自动化工作流", "版本控制", "团队协作", "持续集成"],
+    setupSteps: [
+      "创建GitHub仓库",
+      "添加API密钥到Secrets",
+      "创建工作流文件",
+      "配置工具调用步骤"
+    ]
+  },
+  {
+    id: 2,
+    name: "Zapier自动化",
+    description: "通过Zapier连接工具与5000+应用",
+    category: "自动化",
+    difficulty: "简单",
+    timeRequired: "10分钟",
+    icon: "⚡",
+    benefits: ["无代码集成", "多应用连接", "自动化工作流", "触发器设置"],
+    setupSteps: [
+      "注册Zapier账户",
+      "连接工具API",
+      "创建Zap工作流",
+      "测试和部署"
+    ]
+  },
+  {
+    id: 3,
+    name: "Docker容器化",
+    description: "将工具服务容器化部署",
+    category: "部署",
+    difficulty: "中等",
+    timeRequired: "30分钟",
+    icon: "🐳",
+    benefits: ["环境一致性", "易于部署", "可扩展性", "隔离安全"],
+    setupSteps: [
+      "创建Dockerfile",
+      "配置环境变量",
+      "构建镜像",
+      "运行容器"
+    ]
+  },
+  {
+    id: 4,
+    name: "Kubernetes集群",
+    description: "在K8s集群中部署工具服务",
+    category: "部署",
+    difficulty: "困难",
+    timeRequired: "2小时",
+    icon: "☸️",
+    benefits: ["高可用性", "自动扩缩容", "负载均衡", "服务发现"],
+    setupSteps: [
+      "创建集群配置",
+      "编写部署文件",
+      "配置服务发现",
+      "设置监控告警"
+    ]
+  }
+];
+
+const codeExamples = [
+  {
+    id: 1,
+    title: "JavaScript快速开始",
+    language: "javascript",
+    code: `// 安装 SDK
+// npm install toolweb-sdk
+
+const ToolWeb = require('toolweb-sdk');
+
+// 初始化客户端
+const client = new ToolWeb({
+  apiKey: 'your-api-key-here',
+  baseURL: 'https://api.toolwebsite.com/v1'
+});
+
+// 获取工具列表
+const tools = await client.tools.list();
+console.log('可用工具:', tools);
+
+// 使用JSON格式化工具
+const result = await client.tools.execute('json-formatter', {
+  input: '{"name":"example","value":123}'
+});
+console.log('格式化结果:', result.output);`
+  },
+  {
+    id: 2,
+    title: "Python集成示例",
+    language: "python",
+    code: `# 安装 SDK
+# pip install toolweb-sdk
+
+from toolweb import ToolWebClient
+
+# 初始化客户端
+client = ToolWebClient(
+    api_key='your-api-key-here',
+    base_url='https://api.toolwebsite.com/v1'
+)
+
+# 获取工具列表
+tools = client.tools.list()
+print(f'可用工具数量: {len(tools)}')
+
+# 使用正则表达式测试工具
+result = client.tools.execute('regex-tester', {
+    'pattern': r'\d{3}-\d{3}-\d{4}',
+    'text': '电话号码: 123-456-7890'
+})
+print(f'匹配结果: {result["matches"]}')`
+  },
+  {
+    id: 3,
+    title: "REST API调用",
+    language: "bash",
+    code: `# 获取API密钥
+curl -X POST https://api.toolwebsite.com/v1/auth/login \\\n  -H "Content-Type: application/json" \\\n  -d '{"username":"your-username","password":"your-password"}'
+
+# 获取工具列表
+curl -X GET https://api.toolwebsite.com/v1/tools \\\n  -H "Authorization: Bearer YOUR_API_KEY" \\\n  -H "Content-Type: application/json"
+
+# 使用特定工具
+curl -X POST https://api.toolwebsite.com/v1/tools/base64-encoder/execute \\\n  -H "Authorization: Bearer YOUR_API_KEY" \\\n  -H "Content-Type: application/json" \\\n  -d '{"input":"Hello World"}'`
+  }
+];
+
+const getDifficultyColor = (difficulty: string) => {
+  switch (difficulty) {
+    case "简单": return "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200";
+    case "中等": return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200";
+    case "困难": return "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200";
+    default: return "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300";
+  }
+};
+---
+
+<Layout title="集成与扩展 - 工具网站">
+  <main class="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-green-600 to-blue-700 text-white py-20">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-4xl md:text-6xl font-bold mb-6">
+            集成与扩展
+          </h1>
+          <p class="text-xl md:text-2xl opacity-90 mb-8">
+            将我们的工具无缝集成到您的工作流程中
+          </p>
+            <div class="flex flex-wrap justify-center gap-4 text-sm">
+              <span class="bg-white/20 px-4 py-2 rounded-full flex items-center gap-2">
+              <span class="text-sm">💻</span>
+              API集成
+              </span>
+              <span class="bg-white/20 px-4 py-2 rounded-full flex items-center gap-2">
+              <span class="text-sm">🔌</span>
+              插件支持
+              </span>
+              <span class="bg-white/20 px-4 py-2 rounded-full flex items-center gap-2">
+              <span class="text-sm">📦</span>
+              SDK下载
+              </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- API Documentation Section -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              API文档
+            </h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300">
+              通过REST API将工具功能集成到您的应用中
+            </p>
+          </div>
+
+          <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 mb-8">
+            <div class="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                  <span class="text-base">🔗</span>
+                  基本信息
+                </h3>
+                <div class="space-y-3">
+                  <div>
+                    <span class="font-medium text-gray-700 dark:text-gray-300">基础URL：</span>
+                    <code class="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-sm">
+                      {apiDocumentation.baseUrl}
+                    </code>
+                  </div>
+                  <div>
+                    <span class="font-medium text-gray-700 dark:text-gray-300">认证方式：</span>
+                    <span class="text-gray-600 dark:text-gray-400">{apiDocumentation.authentication.method}</span>
+                  </div>
+                  <div>
+                    <span class="font-medium text-gray-700 dark:text-gray-300">认证头：</span>
+                    <code class="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-sm block mt-1">
+                      {apiDocumentation.authentication.header}
+                    </code>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                  <span class="text-base">🛡️</span>
+                  认证说明
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300">
+                  {apiDocumentation.authentication.description}
+                </p>
+                <div class="mt-4">
+                  <a href="/api-keys" class="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                    <span class="text-sm">🔑</span>
+                    获取API密钥
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">API端点</h3>
+            {apiDocumentation.endpoints.map((endpoint) => (
+              <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+                <div class="flex items-center gap-4 mb-4">
+                  <span class={`px-3 py-1 rounded-full text-sm font-medium ${
+                    endpoint.method === 'GET' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' :
+                    endpoint.method === 'POST' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' :
+                    endpoint.method === 'PUT' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200' :
+                    'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
+                  }`}>
+                    {endpoint.method}
+                  </span>
+                  <code class="bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded text-sm font-mono">
+                    {endpoint.path}
+                  </code>
+                </div>
+                <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                  {endpoint.name}
+                </h4>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                  {endpoint.description}
+                </p>
+                {endpoint.parameters && endpoint.parameters.length > 0 && (
+                  <div>
+                    <h5 class="font-medium text-gray-900 dark:text-white mb-2">参数：</h5>
+                    <div class="space-y-2">
+                      {endpoint.parameters.map((param) => (
+                        <div class="flex items-center gap-2 text-sm">
+                          <code class="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                            {param.name}
+                          </code>
+                          <span class="text-gray-500 dark:text-gray-400">({param.type})</span>
+                          <span class={param.required ? 'text-red-500' : 'text-gray-400'}>
+                            {param.required ? '必需' : '可选'}
+                          </span>
+                          <span class="text-gray-600 dark:text-gray-300">- {param.description}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                <div class="mt-4">
+                  <span class="font-medium text-gray-700 dark:text-gray-300">响应：</span>
+                  <span class="text-gray-600 dark:text-gray-300">{endpoint.response}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SDK Downloads Section -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-800">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              SDK下载
+            </h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300">
+              为您的编程语言选择合适的SDK包
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            {sdkDownloads.map((sdk) => (
+              <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg p-6">
+                <div class="flex items-start gap-4 mb-4">
+                  <div class="text-3xl">{sdk.icon}</div>
+                  <div class="flex-1">
+                    <div class="flex items-center gap-2 mb-1">
+                      <h3 class="text-xl font-bold text-gray-900 dark:text-white">
+                        {sdk.name}
+                      </h3>
+                      <span class="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-2 py-1 rounded text-xs">
+                        {sdk.version}
+                      </span>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-2">
+                      {sdk.description}
+                    </p>
+                    <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
+                      <span>📥 {sdk.downloads} 下载</span>
+                      <span>📦 {sdk.size}</span>
+                      <span>📝 {sdk.language}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-4">
+                  <h4 class="font-medium text-gray-900 dark:text-white mb-2">主要特性：</h4>
+                  <div class="flex flex-wrap gap-2">
+                    {sdk.features.map((feature) => (
+                      <span class="bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
+                        {feature}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div class="mb-4">
+                  <h4 class="font-medium text-gray-900 dark:text-white mb-2">安装命令：</h4>
+                  <div class="bg-gray-900 text-gray-100 p-3 rounded-lg font-mono text-sm">
+                    {sdk.installCommand}
+                  </div>
+                </div>
+
+                <div class="flex gap-2">
+                  <button class="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2">
+                    <span class="text-sm">⬇️</span>
+                    下载
+                  </button>
+                  <a href={sdk.documentation} class="flex-1 border border-blue-600 text-blue-600 px-4 py-2 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors flex items-center justify-center gap-2">
+                    <span class="text-sm">📘</span>
+                    文档
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Plugins Section -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              插件与扩展
+            </h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300">
+              为您的开发环境安装专用插件
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            {plugins.map((plugin) => (
+              <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+                <div class="flex items-start gap-4 mb-4">
+                  <div class="text-3xl">{plugin.icon}</div>
+                  <div class="flex-1">
+                    <div class="flex items-center gap-2 mb-1">
+                      <h3 class="text-xl font-bold text-gray-900 dark:text-white">
+                        {plugin.name}
+                      </h3>
+                      <span class="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 px-2 py-1 rounded text-xs">
+                        {plugin.version}
+                      </span>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-2">
+                      {plugin.description}
+                    </p>
+                    <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
+                      <span>📥 {plugin.installs} 安装</span>
+                      <span>⭐ {plugin.rating}/5.0</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-4">
+                  <h4 class="font-medium text-gray-900 dark:text-white mb-2">插件特性：</h4>
+                  <div class="flex flex-wrap gap-2">
+                    {plugin.features.map((feature) => (
+                      <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
+                        {feature}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div class="flex gap-2">
+                  <a href={plugin.installUrl} class="flex-1 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center gap-2">
+                    <span class="text-sm">⬇️</span>
+                    安装
+                  </a>
+                  <a href={plugin.documentation} class="flex-1 border border-green-600 text-green-600 px-4 py-2 rounded-lg hover:bg-green-50 dark:hover:bg-green-900/20 transition-colors flex items-center justify-center gap-2">
+                    <span class="text-sm">📘</span>
+                    文档
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Third-party Integrations Section -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-800">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              第三方集成
+            </h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300">
+              与流行的开发平台和工具集成
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            {thirdPartyIntegrations.map((integration) => (
+              <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg p-6">
+                <div class="flex items-start gap-4 mb-4">
+                  <div class="text-3xl">{integration.icon}</div>
+                  <div class="flex-1">
+                    <div class="flex items-center gap-2 mb-1">
+                      <h3 class="text-xl font-bold text-gray-900 dark:text-white">
+                        {integration.name}
+                      </h3>
+                      <span class="bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200 px-2 py-1 rounded text-xs">
+                        {integration.category}
+                      </span>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-2">
+                      {integration.description}
+                    </p>
+                    <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
+                      <span class={`px-2 py-1 rounded text-xs ${getDifficultyColor(integration.difficulty)}`}>
+                        {integration.difficulty}
+                      </span>
+                      <span>⏱️ {integration.timeRequired}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-4">
+                  <h4 class="font-medium text-gray-900 dark:text-white mb-2">集成优势：</h4>
+                  <div class="grid grid-cols-2 gap-2">
+                    {integration.benefits.map((benefit) => (
+                      <div class="flex items-center gap-2 text-sm">
+                        <div class="w-1.5 h-1.5 bg-blue-500 rounded-full" />
+                        <span class="text-gray-700 dark:text-gray-300">{benefit}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div class="mb-4">
+                  <h4 class="font-medium text-gray-900 dark:text-white mb-2">设置步骤：</h4>
+                  <ol class="space-y-1">
+                    {integration.setupSteps.map((step, index) => (
+                      <li class="flex items-start gap-2 text-sm">
+                        <span class="bg-blue-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mt-0.5">
+                          {index + 1}
+                        </span>
+                        <span class="text-gray-700 dark:text-gray-300">{step}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+
+                <div class="flex gap-2">
+                  <button class="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2">
+                    <span class="text-sm">⚙️</span>
+                    开始集成
+                  </button>
+                  <button class="flex-1 border border-blue-600 text-blue-600 px-4 py-2 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors flex items-center justify-center gap-2">
+                    <span class="text-sm">📘</span>
+                    查看教程
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Code Examples Section -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              代码示例
+            </h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300">
+              快速上手的代码示例和最佳实践
+            </p>
+          </div>
+
+          <div class="space-y-8">
+            {codeExamples.map((example) => (
+              <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+                <div class="bg-gray-100 dark:bg-gray-700 px-6 py-4 border-b dark:border-gray-600">
+                  <div class="flex items-center justify-between">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white">
+                      {example.title}
+                    </h3>
+                    <span class="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded text-sm">
+                      {example.language}
+                    </span>
+                  </div>
+                </div>
+                <div class="p-6">
+                  <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
+                    <code>{example.code}</code>
+                  </pre>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Support Section -->
+    <section class="py-16 bg-gradient-to-r from-blue-600 to-purple-700 text-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">
+            需要技术支持？
+          </h2>
+          <p class="text-xl opacity-90 mb-8">
+            我们的技术团队随时为您提供集成和扩展方面的帮助
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/contact" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors flex items-center gap-2">
+              <span class="text-base">👥</span>
+              联系支持团队
+            </a>
+            <a href="https://docs.toolwebsite.com" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors flex items-center gap-2">
+              <span class="text-base">📘</span>
+              查看完整文档
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

@@ -1,0 +1,587 @@
+---
+import Layout from '@/layouts/Layout.astro';
+---
+
+<Layout 
+  title="最佳实践与技巧 - 工具门户网站" 
+  description="学习如何更高效地使用工具门户网站，掌握实用的操作技巧和高级功能应用场景"
+>
+  <main class="container mx-auto px-4 py-8">
+    <!-- 页面标题 -->
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">最佳实践与技巧</h1>
+      <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        掌握高效使用工具门户网站的技巧，提升您的工具发现和管理体验
+      </p>
+    </div>
+
+    <!-- 快速导航 -->
+    <div class="mb-12">
+    <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+      <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6">技巧分类</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <a href="#discovery" class="flex items-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors">
+            <span class="text-blue-600 dark:text-blue-400 mr-3">🔍</span>
+            <span class="text-blue-700 dark:text-blue-300 font-medium">工具发现技巧</span>
+          </a>
+          <a href="#evaluation" class="flex items-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors">
+            <span class="text-green-600 dark:text-green-400 mr-3">🎯</span>
+            <span class="text-green-700 dark:text-green-300 font-medium">工具评估方法</span>
+          </a>
+          <a href="#workflow" class="flex items-center p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-colors">
+            <span class="text-purple-600 dark:text-purple-400 mr-3">⚡</span>
+            <span class="text-purple-700 dark:text-purple-300 font-medium">工作流优化</span>
+          </a>
+          <a href="#advanced" class="flex items-center p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg hover:bg-yellow-100 dark:hover:bg-yellow-900/30 transition-colors">
+            <span class="text-yellow-600 dark:text-yellow-400 mr-3">💡</span>
+            <span class="text-yellow-700 dark:text-yellow-300 font-medium">高级技巧</span>
+          </a>
+      </div>
+    </div>
+  </div>
+
+    <!-- 工具发现技巧 -->
+    <section id="discovery" class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">
+        <span class="mr-3 text-blue-600 dark:text-blue-400">🔍</span>
+        工具发现技巧
+      </h2>
+      
+      <div class="space-y-8">
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">系统化的发现方法</h3>
+          <div class="space-y-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-medium text-gray-900 dark:text-white mb-3">分类浏览策略</h4>
+                <div class="space-y-3">
+                  <div class="flex items-start p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                    <div class="w-6 h-6 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mr-3 mt-0.5">
+                      <span class="text-blue-600 dark:text-blue-400 text-xs font-bold">1</span>
+                    </div>
+                    <div>
+                      <h5 class="font-medium text-blue-700 dark:text-blue-300 mb-1">从核心分类开始</h5>
+                      <p class="text-sm text-blue-600 dark:text-blue-400">先浏览与您工作最相关的分类，建立基础工具库</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                    <div class="w-6 h-6 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mr-3 mt-0.5">
+                      <span class="text-blue-600 dark:text-blue-400 text-xs font-bold">2</span>
+                    </div>
+                    <div>
+                      <h5 class="font-medium text-blue-700 dark:text-blue-300 mb-1">扩展到相邻分类</h5>
+                      <p class="text-sm text-blue-600 dark:text-blue-400">探索与核心工作相关的其他分类工具</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                    <div class="w-6 h-6 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mr-3 mt-0.5">
+                      <span class="text-blue-600 dark:text-blue-400 text-xs font-bold">3</span>
+                    </div>
+                    <div>
+                      <h5 class="font-medium text-blue-700 dark:text-blue-300 mb-1">定期探索新分类</h5>
+                      <p class="text-sm text-blue-600 dark:text-blue-400">每月探索一个全新的工具分类</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h4 class="font-medium text-gray-900 dark:text-white mb-3">推荐工具优先</h4>
+                <div class="space-y-3">
+                  <div class="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-4">
+                    <div class="flex items-center mb-2">
+                      <span class="text-yellow-500 mr-2">⭐</span>
+                      <h5 class="font-medium text-yellow-700 dark:text-yellow-300">⭐ 推荐标识</h5>
+                    </div>
+                    <p class="text-sm text-yellow-600 dark:text-yellow-400 mb-2">优先尝试带有推荐标识的工具</p>
+                    <div class="text-xs text-yellow-500 dark:text-yellow-400">
+                      这些工具经过专业评估，质量更有保障
+                    </div>
+                  </div>
+                  <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                    <h5 class="font-medium text-gray-900 dark:text-gray-100 mb-2">权重排序</h5>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">注意工具的权重值，数值越高表示推荐度越高</p>
+                    <div class="text-xs text-gray-500 dark:text-gray-500">
+                      权重综合考虑了工具质量、用户评价和实用性
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">高效的浏览技巧</h3>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="text-center">
+              <div class="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-2xl text-green-600 dark:text-green-400">⚡</span>
+              </div>
+              <h4 class="font-medium text-gray-900 dark:text-white mb-2">快速预览</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-300">
+                通过工具卡片上的图标和描述快速了解核心功能，先建立初步印象
+              </p>
+            </div>
+            <div class="text-center">
+              <div class="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-2xl text-purple-600 dark:text-purple-400">📖</span>
+              </div>
+              <h4 class="font-medium text-gray-900 dark:text-white mb-2">深度了解</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-300">
+                对感兴趣的工具，访问其官网了解详细功能和定价信息
+              </p>
+            </div>
+            <div class="text-center">
+              <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-2xl text-blue-600 dark:text-blue-400">👥</span>
+              </div>
+              <h4 class="font-medium text-gray-900 dark:text-white mb-2">社区反馈</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-300">
+                查看其他用户的评价和使用体验，了解实际应用效果
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 工具评估方法 -->
+    <section id="evaluation" class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">
+        <span class="mr-3 text-green-600 dark:text-green-400">🎯</span>
+        工具评估方法
+      </h2>
+      
+      <div class="space-y-8">
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">评估维度框架</h3>
+          <div class="space-y-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-6">
+                <h4 class="font-medium text-green-700 dark:text-green-300 mb-4 flex items-center">
+                  <span class="mr-2">✔️</span>
+                  功能性评估
+                </h4>
+                <div class="space-y-3">
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 bg-green-500 rounded-full mr-3"></div>
+                    <span class="text-sm text-green-600 dark:text-green-400">核心功能是否满足需求</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 bg-green-500 rounded-full mr-3"></div>
+                    <span class="text-sm text-green-600 dark:text-green-400">功能深度和广度如何</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 bg-green-500 rounded-full mr-3"></div>
+                    <span class="text-sm text-green-600 dark:text-green-400">是否有独特的创新功能</span>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6">
+                <h4 class="font-medium text-blue-700 dark:text-blue-300 mb-4 flex items-center">
+                  <span class="mr-2">⚡</span>
+                  易用性评估
+                </h4>
+                <div class="space-y-3">
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 bg-blue-500 rounded-full mr-3"></div>
+                    <span class="text-sm text-blue-600 dark:text-blue-400">学习曲线是否平缓</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 bg-blue-500 rounded-full mr-3"></div>
+                    <span class="text-sm text-blue-600 dark:text-blue-400">界面设计是否直观</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 bg-blue-500 rounded-full mr-3"></div>
+                    <span class="text-sm text-blue-600 dark:text-blue-400">文档和教程是否完善</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
+              <h4 class="font-medium text-gray-900 dark:text-white mb-4">性价比评估清单</h4>
+              <div class="grid md:grid-cols-3 gap-4">
+                <div>
+                  <h5 class="font-medium text-gray-700 dark:text-gray-300 mb-2">免费工具</h5>
+                  <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                    <li>• 功能是否足够使用</li>
+                    <li>• 是否有使用限制</li>
+                    <li>• 广告是否影响体验</li>
+                  </ul>
+                </div>
+                <div>
+                  <h5 class="font-medium text-gray-700 dark:text-gray-300 mb-2">付费工具</h5>
+                  <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                    <li>• 定价是否合理</li>
+                    <li>• 付费功能是否必需</li>
+                    <li>• 是否有试用期</li>
+                  </ul>
+                </div>
+                <div>
+                  <h5 class="font-medium text-gray-700 dark:text-gray-300 mb-2">替代方案</h5>
+                  <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                    <li>• 是否有免费替代品</li>
+                    <li>• 功能差异是否重要</li>
+                    <li>• 迁移成本如何</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">试用期最佳实践</h3>
+          <div class="space-y-4">
+            <div class="flex items-start p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
+              <div class="w-8 h-8 bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center mr-4 mt-1">
+                <span class="text-yellow-600 dark:text-yellow-400">💡</span>
+              </div>
+              <div>
+                <h4 class="font-medium text-yellow-700 dark:text-yellow-300 mb-2">制定测试计划</h4>
+                <p class="text-sm text-yellow-600 dark:text-yellow-400 mb-2">
+                  在试用期开始前，列出您要测试的核心功能和场景
+                </p>
+                <div class="text-xs text-yellow-500 dark:text-yellow-500">
+                  建议：创建具体的测试任务，而不是随意浏览
+                </div>
+              </div>
+            </div>
+            
+            <div class="flex items-start p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+              <div class="w-8 h-8 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mr-4 mt-1">
+                <span class="text-blue-600 dark:text-blue-400">🎯</span>
+              </div>
+              <div>
+                <h4 class="font-medium text-blue-700 dark:text-blue-300 mb-2">设定评估标准</h4>
+                <p class="text-sm text-blue-600 dark:text-blue-400 mb-2">
+                  为每个测试维度设定明确的评分标准（1-5分制）
+                </p>
+                <div class="text-xs text-blue-500 dark:text-blue-500">
+                  包括：功能完整性、易用性、性能表现、支持质量
+                </div>
+              </div>
+            </div>
+            
+            <div class="flex items-start p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
+              <div class="w-8 h-8 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mr-4 mt-1">
+                <span class="text-green-600 dark:text-green-400">📈</span>
+              </div>
+              <div>
+                <h4 class="font-medium text-green-700 dark:text-green-300 mb-2">记录使用体验</h4>
+                <p class="text-sm text-green-600 dark:text-green-400 mb-2">
+                  详细记录每个功能的优缺点和使用感受
+                </p>
+                <div class="text-xs text-green-500 dark:text-green-500">
+                  建议：截图保存界面，记录具体操作步骤
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 工作流优化 -->
+    <section id="workflow" class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">
+        <span class="mr-3 text-purple-600 dark:text-purple-400">⚡</span>
+        工作流优化
+      </h2>
+      
+      <div class="space-y-8">
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">工具组合策略</h3>
+          <div class="space-y-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+                <h4 class="font-medium text-gray-900 dark:text-white mb-4">开发工作流组合</h4>
+                <div class="space-y-3">
+                  <div class="flex items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                    <div class="w-3 h-3 bg-blue-500 rounded-full mr-3"></div>
+                    <div>
+                      <div class="text-sm font-medium text-gray-900 dark:text-white">代码编辑</div>
+                      <div class="text-xs text-gray-500 dark:text-gray-400">VS Code / Sublime Text</div>
+                    </div>
+                  </div>
+                  <div class="flex items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                    <div class="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                    <div>
+                      <div class="text-sm font-medium text-gray-900 dark:text-white">版本控制</div>
+                      <div class="text-xs text-gray-500 dark:text-gray-400">Git / GitHub</div>
+                    </div>
+                  </div>
+                  <div class="flex items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                    <div class="w-3 h-3 bg-purple-500 rounded-full mr-3"></div>
+                    <div>
+                      <div class="text-sm font-medium text-gray-900 dark:text-white">API测试</div>
+                      <div class="text-xs text-gray-500 dark:text-gray-400">Postman / Insomnia</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+                <h4 class="font-medium text-gray-900 dark:text-white mb-4">设计工作流组合</h4>
+                <div class="space-y-3">
+                  <div class="flex items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                    <div class="w-3 h-3 bg-red-500 rounded-full mr-3"></div>
+                    <div>
+                      <div class="text-sm font-medium text-gray-900 dark:text-white">界面设计</div>
+                      <div class="text-xs text-gray-500 dark:text-gray-400">Figma / Sketch</div>
+                    </div>
+                  </div>
+                  <div class="flex items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                    <div class="w-3 h-3 bg-yellow-500 rounded-full mr-3"></div>
+                    <div>
+                      <div class="text-sm font-medium text-gray-900 dark:text-white">原型制作</div>
+                      <div class="text-xs text-gray-500 dark:text-gray-400">Framer / Principle</div>
+                    </div>
+                  </div>
+                  <div class="flex items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                    <div class="w-3 h-3 bg-indigo-500 rounded-full mr-3"></div>
+                    <div>
+                      <div class="text-sm font-medium text-gray-900 dark:text-white">素材管理</div>
+                      <div class="text-xs text-gray-500 dark:text-gray-400">Unsplash / Icons8</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">工具切换与迁移</h3>
+          <div class="space-y-6">
+            <div class="bg-orange-50 dark:bg-orange-900/20 rounded-lg p-6">
+              <h4 class="font-medium text-orange-700 dark:text-orange-300 mb-4 flex items-center">
+                <span class="mr-2">⚠️</span>
+                切换前的评估清单
+              </h4>
+              <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                  <h5 class="font-medium text-orange-600 dark:text-orange-400 mb-2">成本评估</h5>
+                  <ul class="text-sm text-orange-600 dark:text-orange-400 space-y-1">
+                    <li>• 新工具的订阅费用</li>
+                    <li>• 迁移所需的时间成本</li>
+                    <li>• 团队培训成本</li>
+                    <li>• 数据迁移成本</li>
+                  </ul>
+                </div>
+                <div>
+                  <h5 class="font-medium text-orange-600 dark:text-orange-400 mb-2">风险评估</h5>
+                  <ul class="text-sm text-orange-600 dark:text-orange-400 space-y-1">
+                    <li>• 数据丢失风险</li>
+                    <li>• 兼容性问题</li>
+                    <li>• 学习曲线陡峭</li>
+                    <li>• 供应商稳定性</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-6">
+              <h4 class="font-medium text-green-700 dark:text-green-300 mb-4 flex items-center">
+                <span class="mr-2">✔️</span>
+                迁移最佳实践
+              </h4>
+              <div class="space-y-3">
+                <div class="flex items-start">
+                  <div class="w-6 h-6 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mr-3 mt-1">
+                    <span class="text-green-600 dark:text-green-400 text-xs font-bold">1</span>
+                  </div>
+                  <div>
+                    <h5 class="font-medium text-green-600 dark:text-green-400 mb-1">并行运行期</h5>
+                    <p class="text-sm text-green-600 dark:text-green-400">新旧工具并行使用1-2周，确保平稳过渡</p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="w-6 h-6 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mr-3 mt-1">
+                    <span class="text-green-600 dark:text-green-400 text-xs font-bold">2</span>
+                  </div>
+                  <div>
+                    <h5 class="font-medium text-green-600 dark:text-green-400 mb-1">数据备份</h5>
+                    <p class="text-sm text-green-600 dark:text-green-400">完整备份旧工具中的数据，确保可回滚</p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="w-6 h-6 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mr-3 mt-1">
+                    <span class="text-green-600 dark:text-green-400 text-xs font-bold">3</span>
+                  </div>
+                  <div>
+                    <h5 class="font-medium text-green-600 dark:text-green-400 mb-1">团队沟通</h5>
+                    <p class="text-sm text-green-600 dark:text-green-400">提前通知团队成员，提供充分的培训和支持</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 高级技巧 -->
+    <section id="advanced" class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">
+                <span class="mr-3 text-yellow-600 dark:text-yellow-400">💡</span>
+        高级技巧
+      </h2>
+      
+      <div class="space-y-8">
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">工具生态系统构建</h3>
+          <div class="space-y-6">
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg p-6">
+              <h4 class="font-medium text-blue-700 dark:text-blue-300 mb-4">集成优先策略</h4>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                选择工具时优先考虑集成能力，构建互联互通的工具生态系统
+              </p>
+              <div class="grid md:grid-cols-2 gap-4">
+                <div class="bg-white dark:bg-gray-700 rounded-lg p-4">
+                  <h5 class="font-medium text-gray-900 dark:text-white mb-2">API集成</h5>
+                  <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                    <li>• 检查工具是否提供API接口</li>
+                    <li>• 评估API的文档质量</li>
+                    <li>• 测试集成的复杂度</li>
+                  </ul>
+                </div>
+                <div class="bg-white dark:bg-gray-700 rounded-lg p-4">
+                  <h5 class="font-medium text-gray-900 dark:text-white mb-2">数据同步</h5>
+                  <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                    <li>• 支持数据导入导出</li>
+                    <li>• 实时或定时同步</li>
+                    <li>• 数据格式兼容性</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
+              <h4 class="font-medium text-gray-900 dark:text-white mb-4">自动化工作流</h4>
+              <div class="space-y-4">
+                <div class="flex items-start">
+                  <div class="w-8 h-8 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mr-4 mt-1">
+                    <span class="text-purple-600 dark:text-purple-400">⚡</span>
+                  </div>
+                  <div class="flex-1">
+                    <h5 class="font-medium text-gray-900 dark:text-white mb-2">Zapier/Make集成</h5>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                      利用自动化平台连接不同的工具，实现数据自动流转
+                    </p>
+                    <div class="text-xs text-gray-500 dark:text-gray-500">
+                      例如：表单提交 → 数据处理 → 通知发送 → 报告生成
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <div class="w-8 h-8 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mr-4 mt-1">
+                    <span class="text-green-600 dark:text-green-400">⚙️</span>
+                  </div>
+                  <div class="flex-1">
+                    <h5 class="font-medium text-gray-900 dark:text-white mb-2">自定义脚本</h5>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                      编写自定义脚本处理特殊的数据转换和集成需求
+                    </p>
+                    <div class="text-xs text-gray-500 dark:text-gray-500">
+                      使用Python、JavaScript等语言编写自动化脚本
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">数据驱动的工具优化</h3>
+          <div class="space-y-6">
+            <div class="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-6">
+              <h4 class="font-medium text-yellow-700 dark:text-yellow-300 mb-4">使用数据追踪</h4>
+              <div class="grid md:grid-cols-3 gap-4">
+                <div class="text-center">
+                  <div class="w-12 h-12 bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <span class="text-yellow-600 dark:text-yellow-400">🕒</span>
+                  </div>
+                  <h5 class="font-medium text-yellow-700 dark:text-yellow-300 mb-2">使用频率</h5>
+                  <p class="text-sm text-yellow-600 dark:text-yellow-400">记录每个工具的使用次数和时长</p>
+                </div>
+                <div class="text-center">
+                  <div class="w-12 h-12 bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <span class="text-yellow-600 dark:text-yellow-400">📈</span>
+                  </div>
+                  <h5 class="font-medium text-yellow-700 dark:text-yellow-300 mb-2">效率提升</h5>
+                  <p class="text-sm text-yellow-600 dark:text-yellow-400">测量工具带来的效率改进</p>
+                </div>
+                <div class="text-center">
+                  <div class="w-12 h-12 bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <span class="text-yellow-600 dark:text-yellow-400">💰</span>
+                  </div>
+                  <h5 class="font-medium text-yellow-700 dark:text-yellow-300 mb-2">成本效益</h5>
+                  <p class="text-sm text-yellow-600 dark:text-yellow-400">分析工具的投资回报率</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bg-indigo-50 dark:bg-indigo-900/20 rounded-lg p-6">
+              <h4 class="font-medium text-indigo-700 dark:text-indigo-300 mb-4">定期评估和优化</h4>
+              <div class="space-y-3">
+                <div class="flex items-start">
+                  <div class="w-6 h-6 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center mr-3 mt-1">
+                    <span class="text-indigo-600 dark:text-indigo-400 text-xs font-bold">月</span>
+                  </div>
+                  <div>
+                    <h5 class="font-medium text-indigo-700 dark:text-indigo-300 mb-1">月度回顾</h5>
+                    <p class="text-sm text-indigo-600 dark:text-indigo-400">每月回顾工具使用情况，识别低效或冗余的工具</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <div class="w-6 h-6 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center mr-3 mt-1">
+                    <span class="text-indigo-600 dark:text-indigo-400 text-xs font-bold">季</span>
+                  </div>
+                  <div>
+                    <h5 class="font-medium text-indigo-700 dark:text-indigo-300 mb-1">季度评估</h5>
+                    <p class="text-sm text-indigo-600 dark:text-indigo-400">每季度深度评估工具组合的整体效果</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <div class="w-6 h-6 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center mr-3 mt-1">
+                    <span class="text-indigo-600 dark:text-indigo-400 text-xs font-bold">年</span>
+                  </div>
+                  <div>
+                    <h5 class="font-medium text-indigo-700 dark:text-indigo-300 mb-1">年度优化</h5>
+                    <p class="text-sm text-indigo-600 dark:text-indigo-400">每年重新评估整个工具生态系统，考虑新技术和趋势</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 行动号召 -->
+    <section class="text-center">
+      <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white">
+        <h2 class="text-3xl font-bold mb-4">准备应用这些技巧？</h2>
+        <p class="text-xl mb-8 opacity-90">
+          立即开始探索我们的工具库，将这些最佳实践应用到您的工具发现和使用过程中
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/" class="inline-flex items-center px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors">
+            浏览工具
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+          <a href="/guide" class="inline-flex items-center px-6 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition-colors">
+            查看使用指南
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

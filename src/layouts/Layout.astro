@@ -1,0 +1,57 @@
+---
+import MetaTags from '@/components/MetaTags.astro';
+import SiteHeader from '@/components/SiteHeader.astro';
+import SiteFooter from '@/components/SiteFooter.astro';
+import '@/styles/tailwind.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  showHeader?: boolean;
+}
+
+const { title, description, showHeader = true } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <MetaTags title={title || '工具网站'} description={description || '发现和使用各种实用工具'} />
+    <meta name="theme-color" content="#ffffff" />
+  </head>
+  <body>
+    {showHeader && <SiteHeader />}
+    <main id="main-content">
+      <slot />
+    </main>
+    <SiteFooter />
+  </body>
+</html>
+
+<style>
+  html {
+    height: 100%;
+  }
+  
+  body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+</style>
+
+<script>
+  // 初始化主题（内联脚本以避免闪烁）
+  (function() {
+    const storedTheme = localStorage.getItem('theme-preference');
+    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    const theme = storedTheme || systemTheme;
+    
+    document.documentElement.setAttribute('data-theme', theme);
+    
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (metaThemeColor) {
+      metaThemeColor.setAttribute('content', theme === 'dark' ? '#0f172a' : '#ffffff');
+    }
+  })();
+</script>

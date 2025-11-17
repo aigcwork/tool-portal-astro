@@ -1,0 +1,457 @@
+---
+import Layout from '@/layouts/Layout.astro';
+---
+
+<Layout 
+  title="使用指南 - 工具门户网站" 
+  description="详细的网站使用指南，包含分步骤教程、功能说明和常见使用场景"
+>
+  <main class="container mx-auto px-4 py-8">
+    <!-- 页面标题 -->
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">使用指南</h1>
+      <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        通过我们的详细指南，快速掌握网站的所有功能和使用技巧，提升您的工具发现体验
+      </p>
+    </div>
+
+    <!-- 快速导航 -->
+    <div class="mb-12">
+      <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+        <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6">快速导航</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <a href="#getting-started" class="flex items-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors">
+            <span class="text-blue-600 dark:text-blue-400 mr-3">📖</span>
+            <span class="text-blue-700 dark:text-blue-300 font-medium">开始使用</span>
+          </a>
+          <a href="#searching-tools" class="flex items-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors">
+            <span class="text-green-600 dark:text-green-400 mr-3">🔍</span>
+            <span class="text-green-700 dark:text-green-300 font-medium">搜索工具</span>
+          </a>
+          <a href="#categories" class="flex items-center p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-colors">
+            <span class="text-purple-600 dark:text-purple-400 mr-3">⚙️</span>
+            <span class="text-purple-700 dark:text-purple-300 font-medium">分类浏览</span>
+          </a>
+          <a href="#recommendations" class="flex items-center p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg hover:bg-yellow-100 dark:hover:bg-yellow-900/30 transition-colors">
+            <span class="text-yellow-600 dark:text-yellow-400 mr-3">⭐</span>
+            <span class="text-yellow-700 dark:text-yellow-300 font-medium">推荐工具</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 开始使用 -->
+    <section id="getting-started" class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8">1. 开始使用</h2>
+      
+      <div class="space-y-8">
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">步骤 1: 访问网站</h3>
+          <div class="space-y-4">
+            <p class="text-gray-600 dark:text-gray-300">
+              在浏览器地址栏输入我们的网址，或点击书签中的链接访问工具门户网站。
+            </p>
+            <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+              <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">💡 提示：</p>
+              <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                <li>• 建议将网站添加到书签，方便下次快速访问</li>
+                <li>• 网站支持深色模式，会根据您的系统设置自动切换</li>
+                <li>• 网站完全响应式设计，在手机和平板上也能完美显示</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">步骤 2: 了解首页布局</h3>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h4 class="font-medium text-gray-900 dark:text-white mb-2">顶部导航栏</h4>
+              <ul class="text-gray-600 dark:text-gray-300 space-y-1">
+                <li>• <strong>首页</strong> - 返回主页，查看推荐工具</li>
+                <li>• <strong>分类</strong> - 按类别浏览所有工具</li>
+                <li>• <strong>关于</strong> - 了解网站更多信息</li>
+                <li>• <strong>主题切换</strong> - 在亮色和暗色主题间切换</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-medium text-gray-900 dark:text-white mb-2">主要内容区域</h4>
+              <ul class="text-gray-600 dark:text-gray-300 space-y-1">
+                <li>• <strong>网站统计</strong> - 显示工具总数和分类数量</li>
+                <li>• <strong>推荐工具</strong> - 精选的优质工具展示</li>
+                <li>• <strong>所有工具</strong> - 按分类排列的全部工具</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">步骤 3: 熟悉工具卡片</h3>
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 mb-4">
+            <div class="flex items-center space-x-4">
+              <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
+                <span class="text-blue-600 dark:text-blue-400">💡</span>
+              </div>
+              <div class="flex-1">
+                <h4 class="font-medium text-gray-900 dark:text-white">示例工具</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400">这是一个工具卡片的示例，展示了工具的基本信息</p>
+                <div class="flex items-center space-x-2 mt-1">
+                  <span class="text-xs bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-2 py-1 rounded">开发工具</span>
+                  <span class="text-xs bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 px-2 py-1 rounded">推荐</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="text-gray-600 dark:text-gray-300">
+            每个工具卡片包含：工具图标、名称、描述、分类标签和推荐标识。点击卡片会打开工具的网站。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 搜索工具 -->
+    <section id="searching-tools" class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8">2. 搜索工具</h2>
+      
+      <div class="space-y-8">
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">基本搜索功能</h3>
+          <div class="space-y-4">
+            <p class="text-gray-600 dark:text-gray-300">
+              虽然当前版本还在开发搜索功能，但您可以通过以下方式快速找到所需工具：
+            </p>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
+                <h4 class="font-medium text-blue-700 dark:text-blue-300 mb-2">按分类浏览</h4>
+                <p class="text-sm text-blue-600 dark:text-blue-400">
+                  点击导航栏中的"分类"，按开发、设计、生产力等类别查找工具
+                </p>
+              </div>
+              <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
+                <h4 class="font-medium text-green-700 dark:text-green-300 mb-2">查看推荐工具</h4>
+                <p class="text-sm text-green-600 dark:text-green-400">
+                  首页的推荐工具都是经过精心挑选的优质工具
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">即将推出的搜索功能</h3>
+          <div class="space-y-4">
+            <p class="text-gray-600 dark:text-gray-300">
+              我们正在开发强大的搜索功能，未来将支持：
+            </p>
+            <div class="grid md:grid-cols-3 gap-4">
+              <div class="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <span class="text-purple-600 dark:text-purple-400">🔍</span>
+                </div>
+                <h4 class="font-medium text-gray-900 dark:text-white mb-2">关键词搜索</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400">通过工具名称、描述或标签搜索</p>
+              </div>
+              <div class="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <span class="text-blue-600 dark:text-blue-400">⚙️</span>
+                </div>
+                <h4 class="font-medium text-gray-900 dark:text-white mb-2">高级筛选</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400">按分类、状态、推荐等条件筛选</p>
+              </div>
+              <div class="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                <div class="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <span class="text-green-600 dark:text-green-400">📈</span>
+                </div>
+                <h4 class="font-medium text-gray-900 dark:text-white mb-2">智能推荐</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400">基于使用习惯的个性化推荐</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 分类浏览 -->
+    <section id="categories" class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8">3. 分类浏览</h2>
+      
+      <div class="space-y-8">
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">访问分类页面</h3>
+          <div class="space-y-4">
+            <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+              <h4 class="font-medium text-gray-900 dark:text-white mb-2">步骤说明：</h4>
+              <ol class="text-gray-600 dark:text-gray-300 space-y-2">
+                <li class="flex items-start">
+                  <span class="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5 flex-shrink-0">1</span>
+                  <span>点击顶部导航栏中的"分类"链接</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5 flex-shrink-0">2</span>
+                  <span>您将看到所有工具分类的概览</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5 flex-shrink-0">3</span>
+                  <span>点击任意分类查看该类别下的所有工具</span>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">分类结构</h3>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h4 class="font-medium text-gray-900 dark:text-white mb-3">主要分类</h4>
+              <div class="space-y-2">
+                <div class="flex items-center p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                  <div class="w-8 h-8 bg-blue-100 dark:bg-blue-900 rounded flex items-center justify-center mr-3">
+                    <span class="text-blue-600 dark:text-blue-400 text-sm font-bold">开</span>
+                  </div>
+                  <div>
+                    <div class="font-medium text-gray-900 dark:text-white">开发工具</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">编程IDE、代码编辑器、API工具等</div>
+                  </div>
+                </div>
+                <div class="flex items-center p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                  <div class="w-8 h-8 bg-green-100 dark:bg-green-900 rounded flex items-center justify-center mr-3">
+                    <span class="text-green-600 dark:text-green-400 text-sm font-bold">设</span>
+                  </div>
+                  <div>
+                    <div class="font-medium text-gray-900 dark:text-white">设计工具</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">UI设计、图形编辑、原型工具等</div>
+                  </div>
+                </div>
+                <div class="flex items-center p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                  <div class="w-8 h-8 bg-purple-100 dark:bg-purple-900 rounded flex items-center justify-center mr-3">
+                    <span class="text-purple-600 dark:text-purple-400 text-sm font-bold">效</span>
+                  </div>
+                  <div>
+                    <div class="font-medium text-gray-900 dark:text-white">生产力工具</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">笔记应用、任务管理、协作工具等</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h4 class="font-medium text-gray-900 dark:text-white mb-3">其他分类</h4>
+              <div class="space-y-2">
+                <div class="flex items-center p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
+                  <div class="w-8 h-8 bg-yellow-100 dark:bg-yellow-900 rounded flex items-center justify-center mr-3">
+                    <span class="text-yellow-600 dark:text-yellow-400 text-sm font-bold">学</span>
+                  </div>
+                  <div>
+                    <div class="font-medium text-gray-900 dark:text-white">学习工具</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">在线教育、课程平台、学习应用等</div>
+                  </div>
+                </div>
+                <div class="flex items-center p-3 bg-red-50 dark:bg-red-900/20 rounded-lg">
+                  <div class="w-8 h-8 bg-red-100 dark:bg-red-900 rounded flex items-center justify-center mr-3">
+                    <span class="text-red-600 dark:text-red-400 text-sm font-bold">安</span>
+                  </div>
+                  <div>
+                    <div class="font-medium text-gray-900 dark:text-white">安全工具</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">密码管理、VPN、安全检测等</div>
+                  </div>
+                </div>
+                <div class="flex items-center p-3 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
+                  <div class="w-8 h-8 bg-indigo-100 dark:bg-indigo-900 rounded flex items-center justify-center mr-3">
+                    <span class="text-indigo-600 dark:text-indigo-400 text-sm font-bold">媒</span>
+                  </div>
+                  <div>
+                    <div class="font-medium text-gray-900 dark:text-white">媒体工具</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">视频编辑、音频处理、多媒体工具等</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 推荐工具 -->
+    <section id="recommendations" class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8">4. 推荐工具</h2>
+      
+      <div class="space-y-8">
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">推荐工具标识</h3>
+          <div class="space-y-4">
+            <p class="text-gray-600 dark:text-gray-300">
+              在首页和分类页面，您会看到带有⭐标识的工具卡片，这些是编辑团队精心挑选的优质工具。
+            </p>
+            <div class="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-4">
+              <h4 class="font-medium text-yellow-700 dark:text-yellow-300 mb-2">推荐标准：</h4>
+              <ul class="text-sm text-yellow-600 dark:text-yellow-400 space-y-1">
+                <li>• 工具功能完整且稳定</li>
+                <li>• 用户口碑和评价良好</li>
+                <li>• 在同类工具中具有明显优势</li>
+                <li>• 适合大多数用户使用</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">如何使用推荐工具</h3>
+          <div class="space-y-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-medium text-gray-900 dark:text-white mb-3">新手用户</h4>
+                <ul class="text-gray-600 dark:text-gray-300 space-y-2">
+                  <li class="flex items-start">
+                    <span class="text-green-500 mr-2 mt-0.5 flex-shrink-0">✔️</span>
+                    <span>优先选择推荐工具，降低选择难度</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-green-500 mr-2 mt-0.5 flex-shrink-0">✔️</span>
+                    <span>阅读工具描述，了解核心功能</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-green-500 mr-2 mt-0.5 flex-shrink-0">✔️</span>
+                    <span>从最常用的分类开始探索</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-medium text-gray-900 dark:text-white mb-3">高级用户</h4>
+                <ul class="text-gray-600 dark:text-gray-300 space-y-2">
+                  <li class="flex items-start">
+                    <span class="text-blue-500 mr-2 mt-0.5 flex-shrink-0">✔️</span>
+                    <span>推荐工具作为参考，发现新工具</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-blue-500 mr-2 mt-0.5 flex-shrink-0">✔️</span>
+                    <span>对比推荐工具和其他同类工具</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-blue-500 mr-2 mt-0.5 flex-shrink-0">✔️</span>
+                    <span>关注新添加的推荐工具</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 高级技巧 -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8">5. 高级使用技巧</h2>
+      
+      <div class="space-y-8">
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">工具组合使用</h3>
+          <div class="space-y-4">
+            <p class="text-gray-600 dark:text-gray-300">
+              很多工具可以组合使用，发挥更大的效果。以下是一些推荐的工具组合：
+            </p>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
+                <h4 class="font-medium text-blue-700 dark:text-blue-300 mb-2">开发工作流</h4>
+                <p class="text-sm text-blue-600 dark:text-blue-400 mb-2">VS Code + GitHub + Postman</p>
+                <p class="text-sm text-blue-600 dark:text-blue-400">
+                  使用VS Code编写代码，GitHub进行版本控制，Postman测试API
+                </p>
+              </div>
+              <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
+                <h4 class="font-medium text-green-700 dark:text-green-300 mb-2">设计工作流</h4>
+                <p class="text-sm text-green-600 dark:text-green-400 mb-2">Figma + TinyPNG + Loom</p>
+                <p class="text-sm text-green-600 dark:text-green-400">
+                  在Figma中设计，用TinyPNG压缩图片，通过Loom录制演示
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">定期探索新工具</h3>
+          <div class="space-y-4">
+            <p class="text-gray-600 dark:text-gray-300">
+              建议定期访问网站，发现新添加的工具。技术发展迅速，新工具不断涌现。
+            </p>
+            <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+              <h4 class="font-medium text-gray-900 dark:text-white mb-2">建议的探索频率：</h4>
+              <ul class="text-gray-600 dark:text-gray-300 space-y-1">
+                <li>• <strong>每周</strong> - 查看是否有新工具添加</li>
+                <li>• <strong>每月</strong> - 深入探索一个分类的所有工具</li>
+                <li>• <strong>每季度</strong> - 重新评估您当前使用的工具</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 常见问题解决 -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8">6. 常见问题解决</h2>
+      
+      <div class="space-y-6">
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">工具网站无法访问</h3>
+          <div class="space-y-4">
+            <div class="bg-red-50 dark:bg-red-900/20 rounded-lg p-4">
+              <h4 class="font-medium text-red-700 dark:text-red-300 mb-2">可能原因：</h4>
+              <ul class="text-sm text-red-600 dark:text-red-400 space-y-1">
+                <li>• 工具网站服务器暂时宕机</li>
+                <li>• 工具网站已停止服务</li>
+                <li>• 网络连接问题</li>
+              </ul>
+            </div>
+            <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
+              <h4 class="font-medium text-green-700 dark:text-green-300 mb-2">解决方法：</h4>
+              <ul class="text-sm text-green-600 dark:text-green-400 space-y-1">
+                <li>• 稍后再试，或检查工具状态</li>
+                <li>• 尝试访问该分类的其他类似工具</li>
+                <li>• 通过搜索引擎查找替代工具</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">工具功能与描述不符</h3>
+          <div class="space-y-4">
+            <p class="text-gray-600 dark:text-gray-300">
+              如果您发现某个工具的功能与我们的描述不符，请通过以下方式反馈：
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="/help" class="inline-flex items-center justify-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors">
+                联系支持
+                <span class="ml-2">➡️</span>
+              </a>
+              <a href="/feedback" class="inline-flex items-center justify-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                提交反馈
+                <span class="ml-2">➡️</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 获取更多帮助 -->
+    <section class="text-center">
+      <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white">
+        <h2 class="text-3xl font-bold mb-4">需要更多帮助？</h2>
+        <p class="text-xl mb-8 opacity-90">
+          如果您在使用网站过程中遇到任何问题，或者有任何建议，请随时联系我们
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/help" class="inline-flex items-center px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors">
+            查看帮助中心
+            <span class="ml-2">➡️</span>
+          </a>
+          <a href="/contact" class="inline-flex items-center px-6 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition-colors">
+            联系我们
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

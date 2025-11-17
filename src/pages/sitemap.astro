@@ -1,0 +1,143 @@
+---
+import Layout from '@/layouts/Layout.astro';
+---
+
+<Layout title="网站地图 - 工具门户网站" description="网站页面结构和导航地图">
+  <div class="sitemap-page">
+    <div class="container">
+      <header class="page-header">
+        <h1 class="page-title">网站地图</h1>
+        <p class="page-description">快速找到您需要的页面</p>
+      </header>
+
+      <div class="content">
+        <div class="sitemap-grid">
+          <div class="sitemap-section">
+            <h2 class="sitemap-section-title">主要页面</h2>
+            <ul class="sitemap-list">
+              <li><a href="/" class="sitemap-link">首页</a></li>
+              <li><a href="/categories" class="sitemap-link">分类浏览</a></li>
+              <li><a href="/about" class="sitemap-link">关于我们</a></li>
+            </ul>
+          </div>
+
+          <div class="sitemap-section">
+            <h2 class="sitemap-section-title">法律页面</h2>
+            <ul class="sitemap-list">
+              <li><a href="/privacy" class="sitemap-link">隐私政策</a></li>
+              <li><a href="/terms" class="sitemap-link">服务条款</a></li>
+              <li><a href="/disclaimer" class="sitemap-link">免责声明</a></li>
+              <li><a href="/cookies" class="sitemap-link">Cookie政策</a></li>
+            </ul>
+          </div>
+
+          <div class="sitemap-section">
+            <h2 class="sitemap-section-title">帮助页面</h2>
+            <ul class="sitemap-list">
+              <li><a href="/sitemap" class="sitemap-link">网站地图</a></li>
+              <li><a href="/accessibility" class="sitemap-link">无障碍声明</a></li>
+              <li><a href="/help" class="sitemap-link">帮助中心</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .sitemap-page {
+    min-height: 60vh;
+    padding: var(--space-2xl) 0;
+  }
+
+  .container {
+    max-width: var(--container-lg);
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 var(--space-md) 0;
+  }
+
+  .page-description {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .sitemap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-xl);
+  }
+
+  .sitemap-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+  }
+
+  .sitemap-section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 var(--space-md) 0;
+  }
+
+  .sitemap-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .sitemap-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color var(--transition-fast);
+    display: block;
+    padding: var(--space-xs) 0;
+  }
+
+  .sitemap-link:hover {
+    color: var(--color-primary);
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 var(--space-md);
+    }
+
+    .page-title {
+      font-size: 2rem;
+    }
+
+    .page-description {
+      font-size: 1rem;
+    }
+
+    .sitemap-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+  }
+</style>

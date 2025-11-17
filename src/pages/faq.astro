@@ -1,0 +1,562 @@
+---
+import Layout from '@/layouts/Layout.astro';
+---
+
+<Layout 
+  title="常见问题解答 - 工具门户网站" 
+  description="查看用户最常遇到的问题和详细解答，包括工具使用、网站功能、技术支持等方面"
+>
+  <main class="container mx-auto px-4 py-8">
+    <!-- 页面标题 -->
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">常见问题解答</h1>
+      <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        查看用户最常遇到的问题和详细解答，快速解决您的疑问
+      </p>
+    </div>
+
+    <!-- 快速导航 -->
+    <div class="mb-12">
+      <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+        <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6">问题分类</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <a href="#general" class="flex items-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors">
+            <span class="text-blue-600 dark:text-blue-400 mr-3">ℹ️</span>
+            <span class="text-blue-700 dark:text-blue-300 font-medium">一般问题</span>
+          </a>
+          <a href="#tools" class="flex items-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors">
+            <span class="text-green-600 dark:text-green-400 mr-3">🔍</span>
+            <span class="text-green-700 dark:text-green-300 font-medium">工具相关</span>
+          </a>
+          <a href="#technical" class="flex items-center p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-colors">
+            <span class="text-purple-600 dark:text-purple-400 mr-3">⚡</span>
+            <span class="text-purple-700 dark:text-purple-300 font-medium">技术问题</span>
+          </a>
+          <a href="#security" class="flex items-center p-4 bg-red-50 dark:bg-red-900/20 rounded-lg hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors">
+            <span class="text-red-600 dark:text-red-400 mr-3">🛡️</span>
+            <span class="text-red-700 dark:text-red-300 font-medium">安全隐私</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 一般问题 -->
+    <section id="general" class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">
+        <span class="mr-3 text-blue-600 dark:text-blue-400">ℹ️</span>
+        一般问题
+      </h2>
+      
+      <div class="space-y-6">
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+          <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2 flex items-center">
+              <span class="w-5 h-5 mr-2 text-blue-600 dark:text-blue-400">❓</span>
+              这个网站是做什么的？
+            </h3>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              我们的工具门户网站是一个专业的在线工具发现和推荐平台。我们汇集了各个领域的优质工具，包括开发、设计、生产力、学习、安全等分类，帮助用户快速找到适合自己需求的工具。
+            </p>
+            <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
+              <h4 class="font-medium text-blue-700 dark:text-blue-300 mb-2">主要功能：</h4>
+              <ul class="text-sm text-blue-600 dark:text-blue-400 space-y-1">
+                <li>• 工具分类浏览和搜索</li>
+                <li>• 专业工具推荐和评测</li>
+                <li>• 详细的功能描述和使用指南</li>
+                <li>• 用户友好的界面和体验</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+          <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2 flex items-center">
+              <span class="w-5 h-5 mr-2 text-blue-600 dark:text-blue-400">❓</span>
+              使用这个网站需要注册吗？
+            </h3>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              不需要！我们的网站完全免费使用，无需注册或登录。您可以直接浏览和发现各种工具，没有任何使用限制。
+            </p>
+            <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
+              <div class="flex items-center">
+                <span class="text-green-600 dark:text-green-400 mr-2">✔️</span>
+                <span class="text-green-700 dark:text-green-300 font-medium">完全免费，无需注册</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+          <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2 flex items-center">
+              <span class="w-5 h-5 mr-2 text-blue-600 dark:text-blue-400">❓</span>
+              网站上的工具都是免费的吗？
+            </h3>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              我们收录的工具包含免费和付费两种类型。每个工具的描述中会注明其定价模式，包括：
+            </p>
+            <div class="grid md:grid-cols-3 gap-4">
+              <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
+                <h4 class="font-medium text-green-700 dark:text-green-300 mb-2">完全免费</h4>
+                <p class="text-sm text-green-600 dark:text-green-400">无需付费即可使用全部功能</p>
+              </div>
+              <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
+                <h4 class="font-medium text-blue-700 dark:text-blue-300 mb-2">免费增值</h4>
+                <p class="text-sm text-blue-600 dark:text-blue-400">基础功能免费，高级功能付费</p>
+              </div>
+              <div class="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-4">
+                <h4 class="font-medium text-purple-700 dark:text-purple-300 mb-2">付费工具</h4>
+                <p class="text-sm text-purple-600 dark:text-purple-400">需要付费订阅或购买</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+          <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2 flex items-center">
+              <span class="w-5 h-5 mr-2 text-blue-600 dark:text-blue-400">❓</span>
+              如何推荐新的工具？
+            </h3>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              我们非常欢迎用户推荐优秀的工具！您可以通过以下方式推荐：
+            </p>
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <div class="w-8 h-8 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mr-3 mt-1">
+                  <span class="text-blue-600 dark:text-blue-400 font-bold text-sm">1</span>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-900 dark:text-white mb-1">通过联系表单</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">访问我们的联系页面，填写工具推荐表单</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="w-8 h-8 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mr-3 mt-1">
+                  <span class="text-blue-600 dark:text-blue-400 font-bold text-sm">2</span>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-900 dark:text-white mb-1">发送邮件</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">直接发送邮件到我们的推荐邮箱</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="w-8 h-8 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mr-3 mt-1">
+                  <span class="text-blue-600 dark:text-blue-400 font-bold text-sm">3</span>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-900 dark:text-white mb-1">社交媒体</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">在我们的社交媒体账号下留言推荐</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 工具相关问题 -->
+    <section id="tools" class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">
+        <span class="mr-3 text-green-600 dark:text-green-400">🔍</span>
+        工具相关问题
+      </h2>
+      
+      <div class="space-y-6">
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+          <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2 flex items-center">
+              <span class="w-5 h-5 mr-2 text-green-600 dark:text-green-400">❓</span>
+              工具的质量如何保证？
+            </h3>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              我们对每个收录的工具都有严格的筛选标准：
+            </p>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-medium text-gray-900 dark:text-white mb-3">基础筛选</h4>
+                <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-2">
+                  <li class="flex items-start">
+                    <span class="text-green-500 mr-2 mt-0.5 flex-shrink-0">✔️</span>
+                    <span>工具必须能够正常访问和使用</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-green-500 mr-2 mt-0.5 flex-shrink-0">✔️</span>
+                    <span>具有明确的功能定位和用途</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-green-500 mr-2 mt-0.5 flex-shrink-0">✔️</span>
+                    <span>用户界面友好，易于使用</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-medium text-gray-900 dark:text-white mb-3">质量评估</h4>
+                <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-2">
+                  <li class="flex items-start">
+                    <span class="text-green-500 mr-2 mt-0.5 flex-shrink-0">✔️</span>
+                    <span>功能完整性和稳定性</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-green-500 mr-2 mt-0.5 flex-shrink-0">✔️</span>
+                    <span>用户评价和市场口碑</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-green-500 mr-2 mt-0.5 flex-shrink-0">✔️</span>
+                    <span>更新频率和维护状态</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+          <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2 flex items-center">
+              <span class="w-5 h-5 mr-2 text-green-600 dark:text-green-400">❓</span>
+              发现工具无法使用怎么办？
+            </h3>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              如果您发现某个工具无法正常使用，请按照以下步骤处理：
+            </p>
+            <div class="space-y-4">
+              <div class="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-4">
+                <h4 class="font-medium text-yellow-700 dark:text-yellow-300 mb-2">1. 检查网络连接</h4>
+                <p class="text-sm text-yellow-600 dark:text-yellow-400">确保您的网络连接正常，可以尝试访问其他网站</p>
+              </div>
+              <div class="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-4">
+                <h4 class="font-medium text-yellow-700 dark:text-yellow-300 mb-2">2. 检查工具状态</h4>
+                <p class="text-sm text-yellow-600 dark:text-yellow-400">查看工具是否显示为"活跃"状态，或者是否有维护通知</p>
+              </div>
+              <div class="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-4">
+                <h4 class="font-medium text-yellow-700 dark:text-yellow-300 mb-2">3. 联系支持</h4>
+                <p class="text-sm text-yellow-600 dark:text-yellow-400">如果问题持续存在，请通过我们的联系页面报告问题</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+          <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2 flex items-center">
+              <span class="w-5 h-5 mr-2 text-green-600 dark:text-green-400">❓</span>
+              如何查看工具的详细信息？
+            </h3>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              每个工具卡片都包含了丰富的信息：
+            </p>
+            <div class="grid md:grid-cols-3 gap-4">
+              <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                <h4 class="font-medium text-gray-900 dark:text-white mb-2">基本信息</h4>
+                <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                  <li>• 工具名称和图标</li>
+                  <li>• 功能描述</li>
+                  <li>• 分类标签</li>
+                </ul>
+              </div>
+              <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                <h4 class="font-medium text-gray-900 dark:text-white mb-2">状态信息</h4>
+                <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                  <li>• 活跃状态</li>
+                  <li>• 推荐标识</li>
+                  <li>• 权重排序</li>
+                </ul>
+              </div>
+              <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                <h4 class="font-medium text-gray-900 dark:text-white mb-2">扩展信息</h4>
+                <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                  <li>• 相关使用指南</li>
+                  <li>• 最佳实践建议</li>
+                  <li>• 用户反馈和评价</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 技术问题 -->
+    <section id="technical" class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">
+        <span class="mr-3 text-purple-600 dark:text-purple-400">⚡</span>
+        技术问题
+      </h2>
+      
+      <div class="space-y-6">
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+          <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2 flex items-center">
+              <span class="w-5 h-5 mr-2 text-purple-600 dark:text-purple-400">❓</span>
+              网站支持哪些浏览器？
+            </h3>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              我们的网站支持所有现代浏览器，包括：
+            </p>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-medium text-gray-900 dark:text-white mb-3">桌面浏览器</h4>
+                <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-2">
+                  <li class="flex items-center">
+                    <span class="text-green-500 mr-2">✔️</span>
+                    <span>Chrome 80+</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="text-green-500 mr-2">✔️</span>
+                    <span>Firefox 75+</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="text-green-500 mr-2">✔️</span>
+                    <span>Safari 13+</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="text-green-500 mr-2">✔️</span>
+                    <span>Edge 80+</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-medium text-gray-900 dark:text-white mb-3">移动浏览器</h4>
+                <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-2">
+                  <li class="flex items-center">
+                    <span class="text-green-500 mr-2">✔️</span>
+                    <span>iOS Safari 13+</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="text-green-500 mr-2">✔️</span>
+                    <span>Chrome Mobile 80+</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="text-green-500 mr-2">✔️</span>
+                    <span>Samsung Internet 11+</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="text-green-500 mr-2">✔️</span>
+                    <span>Firefox Mobile 75+</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+          <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2 flex items-center">
+              <span class="w-5 h-5 mr-2 text-purple-600 dark:text-purple-400">❓</span>
+              网站加载缓慢怎么办？
+            </h3>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              如果您遇到网站加载缓慢的问题，可以尝试以下解决方案：
+            </p>
+            <div class="space-y-4">
+              <div class="bg-red-50 dark:bg-red-900/20 rounded-lg p-4">
+                <h4 class="font-medium text-red-700 dark:text-red-300 mb-2">检查网络连接</h4>
+                <ul class="text-sm text-red-600 dark:text-red-400 space-y-1">
+                  <li>• 确保您的网络连接稳定</li>
+                  <li>• 尝试刷新页面或重启路由器</li>
+                  <li>• 检查是否有其他设备占用大量带宽</li>
+                </ul>
+              </div>
+              <div class="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-4">
+                <h4 class="font-medium text-yellow-700 dark:text-yellow-300 mb-2">清理浏览器缓存</h4>
+                <ul class="text-sm text-yellow-600 dark:text-yellow-400 space-y-1">
+                  <li>• 清除浏览器缓存和Cookie</li>
+                  <li>• 尝试使用浏览器的无痕模式</li>
+                  <li>• 禁用可能干扰的浏览器扩展</li>
+                </ul>
+              </div>
+              <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
+                <h4 class="font-medium text-green-700 dark:text-green-300 mb-2">联系技术支持</h4>
+                <ul class="text-sm text-green-600 dark:text-green-400 space-y-1">
+                  <li>• 如果问题持续存在，请联系我们的技术支持</li>
+                  <li>• 提供您的浏览器版本和操作系统信息</li>
+                  <li>• 描述具体的加载问题和时间</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+          <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2 flex items-center">
+              <span class="w-5 h-5 mr-2 text-purple-600 dark:text-purple-400">❓</span>
+              网站在移动设备上显示异常？
+            </h3>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              我们的网站采用响应式设计，应该能在所有设备上正常显示。如果遇到问题：
+            </p>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-medium text-gray-900 dark:text-white mb-3">基本排查</h4>
+                <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-2">
+                  <li class="flex items-start">
+                    <span class="text-green-500 mr-2 mt-0.5 flex-shrink-0">✔️</span>
+                    <span>尝试旋转屏幕或调整浏览器窗口大小</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-green-500 mr-2 mt-0.5 flex-shrink-0">✔️</span>
+                    <span>清除浏览器缓存并重新加载页面</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-green-500 mr-2 mt-0.5 flex-shrink-0">✔️</span>
+                    <span>检查是否启用了桌面版网站模式</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-medium text-gray-900 dark:text-white mb-3">高级解决</h4>
+                <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-2">
+                  <li class="flex items-start">
+                    <span class="text-blue-500 mr-2 mt-0.5 flex-shrink-0">✔️</span>
+                    <span>更新浏览器到最新版本</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-blue-500 mr-2 mt-0.5 flex-shrink-0">✔️</span>
+                    <span>尝试使用不同的浏览器</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-blue-500 mr-2 mt-0.5 flex-shrink-0">✔️</span>
+                    <span>截图并发送给我们的技术支持团队</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 安全隐私问题 -->
+    <section id="security" class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">
+        <span class="w-8 h-8 mr-3 text-red-600 dark:text-red-400">🛡️</span>
+        安全与隐私
+      </h2>
+      
+      <div class="space-y-6">
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+          <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2 flex items-center">
+              <span class="w-5 h-5 mr-2 text-red-600 dark:text-red-400">❓</span>
+              我的浏览数据会被收集吗？
+            </h3>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              我们非常重视用户隐私，采用最小化数据收集原则：
+            </p>
+            <div class="space-y-4">
+              <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
+                <h4 class="font-medium text-green-700 dark:text-green-300 mb-2">不收集个人信息</h4>
+                <p class="text-sm text-green-600 dark:text-green-400">我们不会收集您的姓名、邮箱、电话等个人身份信息</p>
+              </div>
+              <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
+                <h4 class="font-medium text-green-700 dark:text-green-300 mb-2">本地存储优先</h4>
+                <p class="text-sm text-green-600 dark:text-green-400">主题偏好等设置仅保存在您的本地浏览器中</p>
+              </div>
+              <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
+                <h4 class="font-medium text-green-700 dark:text-green-300 mb-2">无跟踪脚本</h4>
+                <p class="text-sm text-green-600 dark:text-green-400">不使用第三方分析或广告跟踪脚本</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+          <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2 flex items-center">
+              <span class="w-5 h-5 mr-2 text-red-600 dark:text-red-400">❓</span>
+              点击工具链接安全吗？
+            </h3>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              我们采取了多项措施确保链接安全：
+            </p>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-medium text-gray-900 dark:text-white mb-3">链接安全检查</h4>
+                <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-2">
+                  <li class="flex items-start">
+                    <span class="text-green-500 mr-2 mt-0.5 flex-shrink-0">✔️</span>
+                    <span>所有链接都经过人工验证</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-green-500 mr-2 mt-0.5 flex-shrink-0">✔️</span>
+                    <span>定期检查链接有效性</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0">✅</span>
+                    <span>使用HTTPS协议的网站优先</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-medium text-gray-900 dark:text-white mb-3">用户保护措施</h4>
+                <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-2">
+                  <li class="flex items-start">
+                    <span class="text-blue-500 mr-2 mt-0.5 flex-shrink-0">✔️</span>
+                    <span>外部链接在新标签页打开</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-blue-500 mr-2 mt-0.5 flex-shrink-0">✔️</span>
+                    <span>使用noopener noreferrer属性</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-blue-500 mr-2 mt-0.5 flex-shrink-0">✔️</span>
+                    <span>明确标识外部链接</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 获取更多帮助 -->
+    <section class="text-center">
+      <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white">
+        <h2 class="text-3xl font-bold mb-4">没有找到您的问题？</h2>
+        <p class="text-xl mb-8 opacity-90">
+          如果您的问题没有在FAQ中找到答案，或者需要更多帮助，请随时联系我们
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contact" class="inline-flex items-center px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors">
+            联系我们
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+          <a href="/help" class="inline-flex items-center px-6 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition-colors">
+            查看帮助中心
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

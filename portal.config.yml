@@ -1,0 +1,77 @@
+# 工具门户网站
+
+name: "工具门户网站"
+type: "website"
+description: "精选的在线工具集合，提升您的工作效率"
+url: "https://tool-portal-astro.vercel.app"
+author:
+  name: "工具门户网站"
+  url: "https://tool-portal-astro.vercel.app"
+
+# 构建配置
+build:
+  command: "npm run build"
+  output: "dist"
+  
+# 开发配置
+dev:
+  command: "npm run dev"
+  port: 4321
+  
+# 部署配置
+deploy:
+  provider: "vercel"
+  branch: "main"
+  auto_deploy: true
+  
+# 性能配置
+performance:
+  target: "90"
+  metrics:
+    - "lighthouse"
+    - "web-vitals"
+    
+# SEO配置
+seo:
+  title: "工具门户网站 - 精选在线工具集合"
+  description: "发现最优质的在线工具，提升您的工作效率"
+  keywords: ["工具", "在线工具", "效率工具", "开发工具", "设计工具"]
+  
+# 无障碍配置
+accessibility:
+  level: "AA"
+  keyboard_navigation: true
+  screen_reader_support: true
+  
+# 主题配置
+theme:
+  default: "light"
+  toggle: true
+  auto_detect: true
+  
+# 工具分类
+categories:
+  - id: "development"
+    name: "开发工具"
+    icon: "💻"
+  - id: "design"
+    name: "设计工具"
+    icon: "🎨"
+  - id: "productivity"
+    name: "生产力工具"
+    icon: "⚡"
+  - id: "learning"
+    name: "学习工具"
+    icon: "📚"
+  - id: "utilities"
+    name: "实用工具"
+    icon: "🔧"
+  - id: "communication"
+    name: "沟通工具"
+    icon: "💬"
+  - id: "media"
+    name: "媒体工具"
+    icon: "🎬"
+  - id: "security"
+    name: "安全工具"
+    icon: "🔒"

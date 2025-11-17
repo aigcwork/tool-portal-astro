@@ -1,0 +1,104 @@
+---
+import Layout from '@/layouts/Layout.astro';
+---
+
+<Layout title="免责声明 - 工具门户网站" description="网站使用条款和责任限制">
+  <div class="disclaimer-page">
+    <div class="container">
+      <header class="page-header">
+        <h1 class="page-title">免责声明</h1>
+        <p class="page-description">最后更新日期：2024年11月14日</p>
+      </header>
+
+      <div class="content">
+        <section class="disclaimer-section">
+          <h2>1. 工具使用声明</h2>
+          <p>本网站提供的所有工具仅供学习和参考使用。我们不对工具的功能完整性、准确性或适用性做出任何保证。用户在使用这些工具时应自行判断并承担相应风险。</p>
+        </section>
+
+        <section class="disclaimer-section">
+          <h2>2. 第三方服务</h2>
+          <p>本网站包含指向第三方工具和服务的链接。这些第三方服务的质量和安全性由各自提供商负责，我们不承担任何责任。建议用户在使用前仔细阅读第三方服务的使用条款和隐私政策。</p>
+        </section>
+
+        <section class="disclaimer-section">
+          <h2>3. 数据安全</h2>
+          <p>虽然我们努力确保网站的安全性，但我们不能保证通过本网站传输的任何信息的安全性。用户应理解并接受使用互联网服务的固有风险。</p>
+        </section>
+
+        <section class="disclaimer-section">
+          <h2>4. 服务可用性</h2>
+          <p>我们保留随时修改、暂停或终止网站服务的权利，恕不另行通知。对于因服务中断或不可用造成的任何损失，我们不承担责任。</p>
+        </section>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .disclaimer-page {
+    min-height: 60vh;
+    padding: var(--space-2xl) 0;
+  }
+
+  .container {
+    max-width: var(--container-lg);
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 var(--space-md) 0;
+  }
+
+  .page-description {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .disclaimer-section {
+    margin-bottom: var(--space-xl);
+  }
+
+  .disclaimer-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 var(--space-md) 0;
+  }
+
+  .disclaimer-section p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin: 0 0 var(--space-sm) 0;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 var(--space-md);
+    }
+
+    .page-title {
+      font-size: 2rem;
+    }
+
+    .page-description {
+      font-size: 1rem;
+    }
+  }
+</style>

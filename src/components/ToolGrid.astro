@@ -1,0 +1,164 @@
+---
+import type { Tool } from '@/types/tool';
+import ToolCard from '@/components/ToolCard.astro';
+
+export interface Props {
+  tools: Tool[];
+  columns?: 'auto' | 1 | 2 | 3 | 4 | 5;
+  gap?: 'sm' | 'md' | 'lg';
+  showFeatured?: boolean;
+}
+
+const { 
+  tools, 
+  columns = 'auto',
+  gap = 'md',
+  showFeatured = true 
+} = Astro.props;
+
+// 根据featured状态排序工具
+const sortedTools = [...tools].sort((a, b) => {
+  if (showFeatured) {
+    // 推荐工具优先
+    if (a.featured && !b.featured) return -1;
+    if (!a.featured && b.featured) return 1;
+  }
+  // 按权重排序
+  return b.weight - a.weight;
+});
+
+const gapClasses = {
+  sm: 'tool-grid--gap-sm',
+  md: 'tool-grid--gap-md',
+  lg: 'tool-grid--gap-lg'
+};
+
+const columnClasses = {
+  auto: 'tool-grid--cols-auto',
+  1: 'tool-grid--cols-1',
+  2: 'tool-grid--cols-2',
+  3: 'tool-grid--cols-3',
+  4: 'tool-grid--cols-4',
+  5: 'tool-grid--cols-5'
+};
+---
+
+<div 
+  class={`tool-grid ${gapClasses[gap]} ${columnClasses[columns]}`}
+  role="list"
+  aria-label="工具列表"
+>
+  {sortedTools.map((tool) => (
+    <div 
+      class="tool-grid__item" 
+      role="listitem"
+      data-tool-id={tool.id}
+    >
+      <ToolCard tool={tool} />
+    </div>
+  ))}
+</div>
+
+<style>
+  .tool-grid {
+    display: grid;
+    container-type: inline-size;
+    container-name: tool-grid;
+  }
+
+  .tool-grid--gap-sm {
+    gap: var(--space-sm);
+  }
+
+  .tool-grid--gap-md {
+    gap: var(--space-md);
+  }
+
+  .tool-grid--gap-lg {
+    gap: var(--space-lg);
+  }
+
+  .tool-grid--cols-auto {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
+  .tool-grid--cols-1 {
+    grid-template-columns: 1fr;
+  }
+
+  .tool-grid--cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tool-grid--cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .tool-grid--cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .tool-grid--cols-5 {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .tool-grid__item {
+    animation-delay: calc(var(--index, 0) * 50ms);
+  }
+
+  /* Staggered animation for grid items */
+  .tool-grid__item:nth-child(1) { --index: 0; }
+  .tool-grid__item:nth-child(2) { --index: 1; }
+  .tool-grid__item:nth-child(3) { --index: 2; }
+  .tool-grid__item:nth-child(4) { --index: 3; }
+  .tool-grid__item:nth-child(5) { --index: 4; }
+  .tool-grid__item:nth-child(6) { --index: 5; }
+  .tool-grid__item:nth-child(7) { --index: 6; }
+  .tool-grid__item:nth-child(8) { --index: 7; }
+
+  /* Container queries for responsive grid */
+  @container tool-grid (max-width: 640px) {
+    .tool-grid--cols-auto {
+      grid-template-columns: 1fr;
+    }
+    
+    .tool-grid--cols-2,
+    .tool-grid--cols-3,
+    .tool-grid--cols-4,
+    .tool-grid--cols-5 {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @container tool-grid (min-width: 641px) and (max-width: 1024px) {
+    .tool-grid--cols-auto {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .tool-grid--cols-3,
+    .tool-grid--cols-4,
+    .tool-grid--cols-5 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @container tool-grid (min-width: 1025px) {
+    .tool-grid--cols-auto {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .tool-grid--cols-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .tool-grid--cols-5 {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+
+  @container tool-grid (min-width: 1280px) {
+    .tool-grid--cols-auto {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>

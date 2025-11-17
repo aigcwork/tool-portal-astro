@@ -1,0 +1,31 @@
+---
+// Client-side script for tool card interactions
+---
+
+<script>
+  // Handle tool card clicks
+  document.addEventListener('DOMContentLoaded', () => {
+    const toolCards = document.querySelectorAll('.tool-card');
+    
+    toolCards.forEach(card => {
+      const content = card.querySelector('.tool-card__content');
+      const toolUrl = content?.getAttribute('data-tool-url');
+      
+      if (toolUrl && content) {
+        // Click handler
+        content.addEventListener('click', () => {
+          window.open(toolUrl, '_blank', 'noopener,noreferrer');
+        });
+        
+        // Keyboard accessibility
+        card.addEventListener('keydown', (e: Event) => {
+          const keyboardEvent = e as KeyboardEvent;
+          if (keyboardEvent.key === 'Enter' || keyboardEvent.key === ' ') {
+            e.preventDefault();
+            window.open(toolUrl, '_blank', 'noopener,noreferrer');
+          }
+        });
+      }
+    });
+  });
+</script>

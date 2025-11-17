@@ -1,0 +1,356 @@
+---
+import Layout from '@/layouts/Layout.astro';
+---
+
+<Layout 
+  title="功能说明与优势 - 工具门户网站" 
+  description="了解我们工具门户网站的核心价值主张、竞争优势和独特功能"
+>
+  <main class="container mx-auto px-4 py-8">
+    <!-- 页面标题 -->
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">功能说明与优势</h1>
+      <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        发现我们工具门户网站的核心价值，了解为什么选择我们作为您的工具发现和管理的最佳平台
+      </p>
+    </div>
+
+    <!-- 核心价值主张 -->
+    <section class="mb-16">
+      <div class="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl p-8 mb-12">
+        <div class="text-center">
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">一站式工具发现平台</h2>
+          <p class="text-lg text-gray-700 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            我们的工具门户网站汇集了各个领域的优质在线工具，从开发设计到生产力提升，从学习教育到安全保护，
+            为用户提供全面、可靠、高效的工具发现和管理体验。告别在众多平台间来回切换的烦恼，在这里找到最适合您的工具。
+          </p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl text-blue-600 dark:text-blue-400">⚡</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">快速发现</h3>
+          <p class="text-gray-600 dark:text-gray-300">
+            智能分类和搜索功能，让您在几秒钟内找到所需的工具，大幅提升工作效率
+          </p>
+        </div>
+
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl text-green-600 dark:text-green-400">✔️</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">精心筛选</h3>
+          <p class="text-gray-600 dark:text-gray-300">
+            每个工具都经过严格筛选和验证，确保质量和可靠性，为您提供最佳的使用体验
+          </p>
+        </div>
+
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl text-purple-600 dark:text-purple-400">👥</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">社区驱动</h3>
+          <p class="text-gray-600 dark:text-gray-300">
+            基于真实用户需求和反馈，持续更新和优化工具库，打造最实用的工具集合
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 竞争优势对比 -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">对比竞品优势</h2>
+      
+      <div class="overflow-x-auto">
+        <div class="min-w-[600px]">
+          <div class="grid grid-cols-4 gap-4 mb-6">
+            <div class="font-semibold text-gray-900 dark:text-white p-4">对比维度</div>
+            <div class="font-semibold text-blue-600 dark:text-blue-400 p-4 text-center">我们的平台</div>
+            <div class="font-semibold text-gray-600 dark:text-gray-400 p-4 text-center">传统工具站</div>
+            <div class="font-semibold text-gray-600 dark:text-gray-400 p-4 text-center">搜索引擎</div>
+          </div>
+
+          <div class="space-y-4">
+            <div class="grid grid-cols-4 gap-4 items-center bg-gray-50 dark:bg-gray-800/50 rounded-lg p-4">
+              <div class="font-medium text-gray-900 dark:text-white">工具筛选质量</div>
+              <div class="text-center">
+                <div class="flex justify-center mb-2">
+                  <div class="flex">
+                    {[...Array(5)].map(() => <span class="text-green-500">✔️</span>)}
+                  </div>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300">严格筛选，质量保证</p>
+              </div>
+              <div class="text-center">
+                <div class="flex justify-center mb-2">
+                  <div class="flex">
+                    {[...Array(3)].map(() => <span class="text-yellow-500">✔️</span>)}
+                    {[...Array(2)].map(() => <div class="w-4 h-4 bg-gray-200 dark:bg-gray-600 rounded"></div>)}
+                  </div>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300">质量参差不齐</p>
+              </div>
+              <div class="text-center">
+                <div class="flex justify-center mb-2">
+                  <div class="flex">
+                    {[...Array(2)].map(() => <span class="text-red-500">✔️</span>)}
+                    {[...Array(3)].map(() => <div class="w-4 h-4 bg-gray-200 dark:bg-gray-600 rounded"></div>)}
+                  </div>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300">需要自行判断</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-4 gap-4 items-center bg-white dark:bg-gray-800 rounded-lg p-4">
+              <div class="font-medium text-gray-900 dark:text-white">分类体系</div>
+              <div class="text-center">
+                <div class="flex justify-center mb-2">
+                  <div class="flex">
+                    {[...Array(5)].map(() => <span class="text-green-500">✔️</span>)}
+                  </div>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300">8大专业分类</p>
+              </div>
+              <div class="text-center">
+                <div class="flex justify-center mb-2">
+                  <div class="flex">
+                    {[...Array(3)].map(() => <span class="text-yellow-500">✔️</span>)}
+                    {[...Array(2)].map(() => <div class="w-4 h-4 bg-gray-200 dark:bg-gray-600 rounded"></div>)}
+                  </div>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300">分类不够完善</p>
+              </div>
+              <div class="text-center">
+                <div class="flex justify-center mb-2">
+                  <div class="flex">
+                    {[...Array(1)].map(() => <span class="text-red-500">✔️</span>)}
+                    {[...Array(4)].map(() => <div class="w-4 h-4 bg-gray-200 dark:bg-gray-600 rounded"></div>)}
+                  </div>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300">无分类体系</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-4 gap-4 items-center bg-gray-50 dark:bg-gray-800/50 rounded-lg p-4">
+              <div class="font-medium text-gray-900 dark:text-white">使用体验</div>
+              <div class="text-center">
+                <div class="flex justify-center mb-2">
+                  <div class="flex">
+                    {[...Array(5)].map(() => <span class="text-green-500">✔️</span>)}
+                  </div>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300">现代化界面</p>
+              </div>
+              <div class="text-center">
+                <div class="flex justify-center mb-2">
+                  <div class="flex">
+                    {[...Array(2)].map(() => <span class="text-red-500">✔️</span>)}
+                    {[...Array(3)].map(() => <div class="w-4 h-4 bg-gray-200 dark:bg-gray-600 rounded"></div>)}
+                  </div>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300">界面陈旧</p>
+              </div>
+              <div class="text-center">
+                <div class="flex justify-center mb-2">
+                  <div class="flex">
+                    {[...Array(2)].map(() => <span class="text-yellow-500">✔️</span>)}
+                    {[...Array(3)].map(() => <div class="w-4 h-4 bg-gray-200 dark:bg-gray-600 rounded"></div>)}
+                  </div>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300">需要多次点击</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-4 gap-4 items-center bg-white dark:bg-gray-800 rounded-lg p-4">
+              <div class="font-medium text-gray-900 dark:text-white">更新频率</div>
+              <div class="text-center">
+                <div class="flex justify-center mb-2">
+                  <div class="flex">
+                    {[...Array(5)].map(() => <span class="text-green-500">✔️</span>)}
+                  </div>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300">持续更新</p>
+              </div>
+              <div class="text-center">
+                <div class="flex justify-center mb-2">
+                  <div class="flex">
+                    {[...Array(2)].map(() => <span class="text-red-500">✔️</span>)}
+                    {[...Array(3)].map(() => <div class="w-4 h-4 bg-gray-200 dark:bg-gray-600 rounded"></div>)}
+                  </div>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300">更新缓慢</p>
+              </div>
+              <div class="text-center">
+                <div class="flex justify-center mb-2">
+                  <div class="flex">
+                    {[...Array(3)].map(() => <span class="text-yellow-500">✔️</span>)}
+                    {[...Array(2)].map(() => <div class="w-4 h-4 bg-gray-200 dark:bg-gray-600 rounded"></div>)}
+                  </div>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300">依赖算法</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 核心功能特性 -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">核心功能特性</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+          <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-xl text-blue-600 dark:text-blue-400">🛡️</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">安全可靠</h3>
+          <p class="text-gray-600 dark:text-gray-300">
+            所有工具都经过安全验证，确保用户数据和隐私安全。我们严格筛选合作伙伴，只推荐值得信赖的工具。
+          </p>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+          <div class="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-xl text-green-600 dark:text-green-400">📈</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">性能优化</h3>
+          <p class="text-gray-600 dark:text-gray-300">
+            采用最新的前端技术栈，确保网站加载速度快，用户体验流畅。支持离线访问和渐进式加载。
+          </p>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+          <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-xl text-purple-600 dark:text-purple-400">🏆</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">专业认证</h3>
+          <p class="text-gray-600 dark:text-gray-300">
+            与行业专家合作，对工具进行专业评估和认证，确保推荐的每个工具都符合高标准。
+          </p>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+          <div class="w-12 h-12 bg-red-100 dark:bg-red-900 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-xl text-red-600 dark:text-red-400">👥</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">社区驱动</h3>
+          <p class="text-gray-600 dark:text-gray-300">
+            用户可以对工具进行评价和反馈，我们的推荐算法会考虑社区意见，确保推荐的准确性。
+          </p>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+          <div class="w-12 h-12 bg-yellow-100 dark:bg-yellow-900 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-xl text-yellow-600 dark:text-yellow-400">⚡</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">智能推荐</h3>
+          <p class="text-gray-600 dark:text-gray-300">
+            基于用户行为和使用习惯，提供个性化的工具推荐，帮助用户发现最适合的工具。
+          </p>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+          <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-xl text-indigo-600 dark:text-indigo-400">✔️</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">持续更新</h3>
+          <p class="text-gray-600 dark:text-gray-300">
+            我们的团队持续关注行业动态，及时更新工具库，确保用户能够获取最新的工具信息。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 用户价值主张 -->
+    <section class="mb-16">
+      <div class="bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900/20 rounded-2xl p-8">
+        <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-8">为什么选择我们？</h2>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">为您节省时间</h3>
+            <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+              <li class="flex items-start">
+                <span class="text-green-500 mr-2 mt-0.5 flex-shrink-0">✔️</span>
+                <span>无需在多个平台间来回切换寻找工具</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-green-500 mr-2 mt-0.5 flex-shrink-0">✔️</span>
+                <span>专业分类帮助您快速定位所需工具</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-green-500 mr-2 mt-0.5 flex-shrink-0">✔️</span>
+                <span>详细的工具描述和使用场景说明</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">为您提供价值</h3>
+            <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+              <li class="flex items-start">
+                <span class="text-green-500 mr-2 mt-0.5 flex-shrink-0">✔️</span>
+                <span>只推荐高质量、可靠的工具</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-green-500 mr-2 mt-0.5 flex-shrink-0">✔️</span>
+                <span>持续更新的工具库和最新资讯</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-green-500 mr-2 mt-0.5 flex-shrink-0">✔️</span>
+                <span>基于用户反馈的个性化推荐</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 统计数据展示 -->
+    <section class="mb-16">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="text-center p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
+          <div class="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">50+</div>
+          <div class="text-gray-600 dark:text-gray-300">精选工具</div>
+        </div>
+        <div class="text-center p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
+          <div class="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">8</div>
+          <div class="text-gray-600 dark:text-gray-300">专业分类</div>
+        </div>
+        <div class="text-center p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
+          <div class="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">100%</div>
+          <div class="text-gray-600 dark:text-gray-300">免费使用</div>
+        </div>
+        <div class="text-center p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
+          <div class="text-3xl font-bold text-red-600 dark:text-red-400 mb-2">24/7</div>
+          <div class="text-gray-600 dark:text-gray-300">随时可用</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 行动号召 -->
+    <section class="text-center">
+      <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white">
+        <h2 class="text-3xl font-bold mb-4">准备开始您的工具发现之旅？</h2>
+        <p class="text-xl mb-8 opacity-90">
+          立即探索我们精心策划的工具库，找到能够提升您工作效率的完美工具
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/" class="inline-flex items-center px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors">
+            浏览工具
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+          <a href="/guide" class="inline-flex items-center px-6 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition-colors">
+            查看使用指南
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

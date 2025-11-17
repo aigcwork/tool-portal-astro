@@ -1,0 +1,105 @@
+---
+import Layout from '@/layouts/Layout.astro';
+---
+
+<Layout title="隐私政策 - 工具门户网站" description="了解我们如何保护您的隐私和个人信息">
+  <div class="privacy-page">
+    <div class="container">
+      <header class="page-header">
+        <h1 class="page-title">隐私政策</h1>
+        <p class="page-description">最后更新日期：2024年11月14日</p>
+      </header>
+
+      <div class="content">
+        <section class="policy-section">
+          <h2>1. 信息收集</h2>
+          <p>我们非常重视您的隐私。本网站是静态网站，不收集任何个人身份信息。我们不会要求您提供姓名、电子邮件地址或其他个人信息。</p>
+        </section>
+
+        <section class="policy-section">
+          <h2>2. Cookie使用</h2>
+          <p>我们仅在您的浏览器本地存储主题偏好设置（深色/浅色模式），这些信息不会发送到我们的服务器。</p>
+        </section>
+
+        <section class="policy-section">
+          <h2>3. 第三方链接</h2>
+          <p>本网站包含指向第三方网站的链接。我们不对这些网站的隐私做法负责。我们建议您在访问这些网站时查看它们的隐私政策。</p>
+        </section>
+
+        <section class="policy-section">
+          <h2>4. 联系我们</h2>
+          <p>如果您对我们的隐私政策有任何疑问，请通过以下方式联系我们：</p>
+          <p>电子邮件：contact@toolportal.com</p>
+        </section>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .privacy-page {
+    min-height: 60vh;
+    padding: var(--space-2xl) 0;
+  }
+
+  .container {
+    max-width: var(--container-lg);
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 var(--space-md) 0;
+  }
+
+  .page-description {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .policy-section {
+    margin-bottom: var(--space-xl);
+  }
+
+  .policy-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 var(--space-md) 0;
+  }
+
+  .policy-section p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin: 0 0 var(--space-sm) 0;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 var(--space-md);
+    }
+
+    .page-title {
+      font-size: 2rem;
+    }
+
+    .page-description {
+      font-size: 1rem;
+    }
+  }
+</style>

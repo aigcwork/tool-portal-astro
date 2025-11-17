@@ -1,0 +1,492 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const newsArticles = [
+  {
+    id: 1,
+    title: "工具网站推出全新AI智能推荐系统",
+    summary: "基于用户行为分析的个性化工具推荐功能正式上线，帮助用户更快找到所需工具",
+    content: "我们很高兴宣布，全新的AI智能推荐系统已经正式上线。该系统通过分析用户的使用习惯、搜索历史和工具偏好，为每位用户提供个性化的工具推荐服务。这一功能的推出将大大提升用户体验，帮助开发者、设计师和数据分析师等专业人士更快找到适合自己的工具。",
+    category: "产品更新",
+    tags: ["AI", "推荐系统", "个性化"],
+    date: "2024-01-15",
+    readTime: "3分钟",
+    featured: true,
+    image: "https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=AI%20recommendation%20system%20interface%20with%20modern%20design%20and%20smart%20algorithms&image_size=landscape_16_9",
+    author: {
+      name: "技术团队",
+      avatar: "👨‍💻"
+    }
+  },
+  {
+    id: 2,
+    title: "月度工具使用报告：开发者最爱TOP10工具揭晓",
+    summary: "根据最新数据统计，代码格式化工具和JSON解析器成为最受欢迎的工具类别",
+    content: "最新发布的月度使用报告显示，代码格式化工具、JSON解析器和正则表达式测试工具位列最受欢迎工具前三名。报告显示，超过85%的用户每周至少使用这些工具3次以上。此外，图片优化工具和颜色选择器也在设计师用户群体中获得广泛应用。",
+    category: "数据统计",
+    tags: ["使用报告", "开发者工具", "趋势分析"],
+    date: "2024-11-17",
+    readTime: "5分钟",
+    featured: true,
+    image: "https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=Developer%20workspace%20with%20multiple%20code%20tools%20and%20analytics%20charts%20showing%20usage%20statistics&image_size=landscape_16_9",
+    author: {
+      name: "数据分析组",
+      avatar: "📊"
+    }
+  },
+  {
+    id: 3,
+    title: "安全升级：全站HTTPS加密和双因素认证功能上线",
+    summary: "为了保障用户数据安全，我们完成了全站HTTPS加密升级，并推出了双因素认证功能",
+    content: "用户安全一直是我们的首要任务。此次升级包括全站HTTPS加密、双因素认证、API访问限制等多项安全措施。我们还引入了先进的加密算法和安全审计机制，确保用户在使用我们的工具时，数据传输和存储都能得到最高级别的安全保护。",
+    category: "安全公告",
+    tags: ["安全", "HTTPS", "双因素认证"],
+    date: "2024-01-08",
+    readTime: "4分钟",
+    featured: true,
+    image: "https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=Cybersecurity%20shield%20with%20lock%20icons%20and%20encryption%20symbols%20in%20modern%20tech%20style&image_size=landscape_16_9",
+    author: {
+      name: "安全团队",
+      avatar: "🔒"
+    }
+  },
+  {
+    id: 4,
+    title: "移动端体验优化：响应式设计全面升级",
+    summary: "针对移动设备用户的使用体验进行了全面优化，现在可以在手机上更流畅地使用所有工具",
+    content: "随着移动设备使用率的不断提升，我们对移动端用户体验进行了全面优化。新的响应式设计确保用户无论是在手机、平板还是桌面设备上，都能获得一致且流畅的使用体验。所有工具都经过了移动端适配，操作更加便捷。",
+    category: "产品更新",
+    tags: ["移动端", "响应式设计", "用户体验"],
+    date: "2024-01-05",
+    readTime: "3分钟",
+    featured: false,
+    image: "https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=Mobile%20devices%20showing%20responsive%20web%20design%20with%20modern%20UI%20elements%20and%20smooth%20interactions&image_size=landscape_16_9",
+    author: {
+      name: "UX团队",
+      avatar: "📱"
+    }
+  },
+  {
+    id: 5,
+    title: "社区建设：用户反馈功能和新工具征集活动启动",
+    summary: "为了更好地服务用户社区，我们推出了用户反馈系统和新工具征集活动",
+    content: "我们正式启动了用户社区建设计划，包括用户反馈系统、新工具征集活动和技术交流论坛。用户可以直接在平台上提交工具需求、报告问题或分享使用心得。我们承诺会认真考虑每一条反馈，并在后续的产品更新中体现用户的建议。",
+    category: "社区活动",
+    tags: ["用户社区", "反馈", "工具征集"],
+    date: "2024-01-03",
+    readTime: "6分钟",
+    featured: false,
+    image: "https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=Community%20of%20developers%20collaborating%20online%20with%20discussion%20forums%20and%20feedback%20systems&image_size=landscape_16_9",
+    author: {
+      name: "社区运营",
+      avatar: "👥"
+    }
+  },
+  {
+    id: 6,
+    title: "性能突破：工具响应速度提升50%",
+    summary: "通过技术架构优化，所有工具的响应速度平均提升了50%，用户体验大幅改善",
+    content: "技术团队经过三个月的努力，成功优化了后端架构和前端性能。通过引入CDN加速、缓存优化、代码压缩等技术手段，所有工具的响应速度平均提升了50%。用户现在可以享受到更加流畅和快速的使用体验。",
+    category: "技术更新",
+    tags: ["性能优化", "技术架构", "用户体验"],
+    date: "2023-12-28",
+    readTime: "4分钟",
+    featured: true,
+    image: "https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=High-performance%20server%20infrastructure%20with%20speed%20gauges%20and%20optimization%20charts&image_size=landscape_16_9",
+    author: {
+      name: "技术架构组",
+      avatar: "⚡"
+    }
+  }
+];
+
+const techTrends = [
+  {
+    id: 1,
+    title: "低代码开发工具需求激增",
+    summary: "2024年低代码开发工具的使用量增长了200%",
+    trend: "up",
+    impact: "high",
+    category: "开发趋势"
+  },
+  {
+    id: 2,
+    title: "AI辅助编程工具普及",
+    summary: "超过60%的开发者开始使用AI编程助手",
+    trend: "up",
+    impact: "medium",
+    category: "AI技术"
+  },
+  {
+    id: 3,
+    title: "远程协作工具需求稳定",
+    summary: "远程办公常态化推动协作工具持续增长",
+    trend: "stable",
+    impact: "medium",
+    category: "协作工具"
+  },
+  {
+    id: 4,
+    title: "数据安全工具关注度提升",
+    summary: "数据泄露事件推动安全工具需求增长150%",
+    trend: "up",
+    impact: "high",
+    category: "安全工具"
+  }
+];
+
+const upcomingFeatures = [
+  {
+    id: 1,
+    title: "批量工具处理功能",
+    description: "支持同时处理多个文件和批量操作",
+    status: "开发中",
+    expectedDate: "2024年Q1",
+    priority: "high"
+  },
+  {
+    id: 2,
+    title: "团队协作工作空间",
+    description: "支持团队共享工具配置和使用记录",
+    status: "规划中",
+    expectedDate: "2024年Q2",
+    priority: "medium"
+  },
+  {
+    id: 3,
+    title: "API接口开放",
+    description: "提供开发者API，支持第三方集成",
+    status: "测试中",
+    expectedDate: "2024年Q1",
+    priority: "high"
+  },
+  {
+    id: 4,
+    title: "离线版本工具",
+    description: "支持无网络环境下的工具使用",
+    status: "调研中",
+    expectedDate: "2024年Q3",
+    priority: "medium"
+  }
+];
+
+const getCategoryColor = (category: string) => {
+  const colors: Record<string, string> = {
+    "产品更新": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
+    "数据统计": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
+    "安全公告": "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200",
+    "技术更新": "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200",
+    "社区活动": "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200"
+  };
+  return colors[category] || "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300";
+};
+
+const getTrendIcon = (trend: string) => {
+  switch (trend) {
+    case "up": return "📈";
+    case "down": return "📉";
+    case "stable": return "➡️";
+    default: return "📊";
+  }
+};
+
+const getStatusColor = (status: string) => {
+  const colors: Record<string, string> = {
+    "开发中": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
+    "测试中": "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200",
+    "规划中": "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300",
+    "调研中": "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200"
+  };
+  return colors[status] || "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300";
+};
+---
+
+<Layout title="相关新闻与资讯 - 工具网站">
+  <main class="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-indigo-600 to-blue-700 text-white py-20">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-4xl md:text-6xl font-bold mb-6">
+            最新资讯与动态
+          </h1>
+          <p class="text-xl md:text-2xl opacity-90 mb-8">
+            了解产品更新、技术趋势和行业动态
+          </p>
+          <div class="flex flex-wrap justify-center gap-4 text-sm">
+            <span class="bg-white/20 px-4 py-2 rounded-full flex items-center gap-2">
+              <span class="text-sm">🚀</span>
+              最新发布
+            </span>
+            <span class="bg-white/20 px-4 py-2 rounded-full flex items-center gap-2">
+              <span class="text-sm">📈</span>
+              行业趋势
+            </span>
+            <span class="bg-white/20 px-4 py-2 rounded-full flex items-center gap-2">
+              <span class="text-sm">👥</span>
+              社区动态
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Articles Section -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              精选文章
+            </h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300">
+              不容错过的最新动态和重要更新
+            </p>
+          </div>
+
+          <div class="grid lg:grid-cols-2 gap-8 mb-12">
+            {newsArticles.filter(article => article.featured).map((article) => (
+              <article class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <div class="aspect-video bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
+                  <img 
+                    src={article.image} 
+                    alt={article.title}
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div class="absolute top-4 left-4">
+                    <span class={`px-3 py-1 rounded-full text-xs font-medium ${getCategoryColor(article.category)}`}>
+                      {article.category}
+                    </span>
+                  </div>
+                </div>
+                
+                <div class="p-6">
+                  <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-3">
+                    <div class="flex items-center gap-1">
+                      <span class="text-sm">📅</span>
+                      {article.date}
+                    </div>
+                    <div class="flex items-center gap-1">
+                      <span class="text-sm">🕒</span>
+                      {article.readTime}
+                    </div>
+                    <div class="flex items-center gap-1">
+                      <span>{article.author.avatar}</span>
+                      {article.author.name}
+                    </div>
+                  </div>
+                  
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                    {article.title}
+                  </h3>
+                  
+                  <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+                    {article.summary}
+                  </p>
+                  
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    {article.tags.map((tag) => (
+                      <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  <a href={`#article-${article.id}`} class="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium">
+                    阅读全文
+                    <span class="text-sm">↗️</span>
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- All Articles Section -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-800">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              全部资讯
+            </h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300">
+              浏览所有新闻动态和技术更新
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {newsArticles.map((article) => (
+              <article class="bg-white dark:bg-gray-700 rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class={`px-2 py-1 rounded-full text-xs font-medium ${getCategoryColor(article.category)}`}>
+                    {article.category}
+                  </span>
+                  <div class="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
+                    <span class="text-xs">🕒</span>
+                    {article.readTime}
+                  </div>
+                </div>
+                
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">
+                  {article.title}
+                </h3>
+                
+                <p class="text-gray-600 dark:text-gray-300 text-sm mb-3 line-clamp-2">
+                  {article.summary}
+                </p>
+                
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
+                    <span class="text-xs">📅</span>
+                    {article.date}
+                  </div>
+                  
+                  <a href={`#article-${article.id}`} class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 text-sm font-medium">
+                    阅读更多
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech Trends Section -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              技术趋势
+            </h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300">
+              把握行业发展脉搏，了解最新技术动向
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            {techTrends.map((trend) => (
+              <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+                <div class="flex items-start gap-4">
+                  <div class="text-2xl">{getTrendIcon(trend.trend)}</div>
+                  <div class="flex-1">
+                    <div class="flex items-center gap-2 mb-2">
+                      <h3 class="text-lg font-bold text-gray-900 dark:text-white">
+                        {trend.title}
+                      </h3>
+                      <span class={`px-2 py-1 rounded-full text-xs font-medium ${
+                        trend.impact === 'high' ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200' :
+                        trend.impact === 'medium' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200' :
+                        'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+                      }`}>
+                        {trend.impact === 'high' ? '高影响' : trend.impact === 'medium' ? '中影响' : '低影响'}
+                      </span>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 mb-3">
+                      {trend.summary}
+                    </p>
+                    <div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                      <span class="text-sm">🏷️</span>
+                      {trend.category}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Upcoming Features Section -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-800">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              即将推出
+            </h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300">
+              了解我们正在开发的新功能和计划
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            {upcomingFeatures.map((feature) => (
+              <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg p-6">
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white">
+                    <span class="text-xl">🚀</span>
+                  </div>
+                  <div class="flex-1">
+                    <div class="flex items-center gap-2 mb-2">
+                      <h3 class="text-lg font-bold text-gray-900 dark:text-white">
+                        {feature.title}
+                      </h3>
+                      <span class={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(feature.status)}`}>
+                        {feature.status}
+                      </span>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 mb-3">
+                      {feature.description}
+                    </p>
+                    <div class="flex items-center justify-between">
+                      <div class="text-sm text-gray-500 dark:text-gray-400">
+                        预计时间：{feature.expectedDate}
+                      </div>
+                      <div class={`px-2 py-1 rounded text-xs font-medium ${
+                        feature.priority === 'high' ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200' :
+                        'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
+                      }`}>
+                        {feature.priority === 'high' ? '高优先级' : '普通优先级'}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-gradient-to-r from-purple-600 to-blue-700 text-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="flex justify-center mb-6">
+              <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
+                <span class="text-3xl">🏆</span>
+              </div>
+            </div>
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">
+            订阅我们的资讯
+          </h2>
+          <p class="text-xl opacity-90 mb-8">
+            第一时间获取产品更新、技术文章和行业动态
+          </p>
+          <div class="max-w-md mx-auto">
+            <div class="flex gap-4">
+              <input 
+                type="email" 
+                placeholder="输入您的邮箱地址"
+                class="flex-1 px-4 py-3 rounded-lg text-gray-900 bg-white/90 placeholder-gray-500"
+              />
+              <button class="bg-white text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                订阅
+              </button>
+            </div>
+            <p class="text-sm opacity-75 mt-3">
+              我们尊重您的隐私，可以随时取消订阅
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

@@ -1,0 +1,109 @@
+---
+import Layout from '@/layouts/Layout.astro';
+---
+
+<Layout title="服务条款 - 工具门户网站" description="使用我们服务的条款和条件">
+  <div class="terms-page">
+    <div class="container">
+      <header class="page-header">
+        <h1 class="page-title">服务条款</h1>
+        <p class="page-description">最后更新日期：2024年11月14日</p>
+      </header>
+
+      <div class="content">
+        <section class="terms-section">
+          <h2>1. 接受条款</h2>
+          <p>通过访问和使用本网站，您表示接受并同意遵守这些服务条款以及所有适用的法律法规。</p>
+        </section>
+
+        <section class="terms-section">
+          <h2>2. 使用许可</h2>
+          <p>我们授予您有限的、非排他性的、不可转让的许可，以访问和个人使用本网站。此许可不包括对网站或其内容的任何商业使用。</p>
+        </section>
+
+        <section class="terms-section">
+          <h2>3. 免责声明</h2>
+          <p>本网站按"现状"提供，我们不对其适用性、可靠性或准确性作出任何明示或暗示的保证。使用本网站的风险由您自行承担。</p>
+        </section>
+
+        <section class="terms-section">
+          <h2>4. 责任限制</h2>
+          <p>在任何情况下，我们都不对因使用或无法使用本网站而导致的任何直接、间接、附带、特殊或后果性损害承担责任。</p>
+        </section>
+
+        <section class="terms-section">
+          <h2>5. 条款修改</h2>
+          <p>我们保留随时修改这些服务条款的权利。修改后的条款将在本页面发布后立即生效。</p>
+        </section>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .terms-page {
+    min-height: 60vh;
+    padding: var(--space-2xl) 0;
+  }
+
+  .container {
+    max-width: var(--container-lg);
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 var(--space-md) 0;
+  }
+
+  .page-description {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .terms-section {
+    margin-bottom: var(--space-xl);
+  }
+
+  .terms-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 var(--space-md) 0;
+  }
+
+  .terms-section p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin: 0 0 var(--space-sm) 0;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 var(--space-md);
+    }
+
+    .page-title {
+      font-size: 2rem;
+    }
+
+    .page-description {
+      font-size: 1rem;
+    }
+  }
+</style>
