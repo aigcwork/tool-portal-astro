@@ -10,7 +10,7 @@
     "preview": "astro preview",
     "check": "astro check && tsc --noEmit",
     "astro": "astro",
-    "deploy": "wrangler pages publish dist --project-name=tool-portal-astro"
+    "deploy": "wrangler pages deploy dist"
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.0.0",

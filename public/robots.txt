@@ -1,0 +1,12 @@
+# robots.txt - 搜索引擎爬虫控制文件
+# 使用通用禁止策略，不暴露具体路径结构
+
+User-agent: *
+Allow: /
+
+# 使用模糊路径，不暴露具体管理路径
+Disallow: /*/*
+Disallow: /*?*
+
+# 网站地图（占位符，实际部署时替换）
+# Sitemap: https://your-domain.com/sitemap.xml

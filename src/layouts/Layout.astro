@@ -18,6 +18,7 @@ const { title, description, showHeader = true } = Astro.props;
   <head>
     <MetaTags title={title || '工具网站'} description={description || '发现和使用各种实用工具'} />
     <meta name="theme-color" content="#ffffff" />
+    <slot name="head" />
   </head>
   <body>
     {showHeader && <SiteHeader />}
