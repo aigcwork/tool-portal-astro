@@ -37,16 +37,15 @@ let newsArticles: NewsArticle[] = [];
 let techTrends: TechTrend[] = [];
 let upcomingFeatures: UpcomingFeature[] = [];
 
+import newsData from '@/data/news.json';
+import trendsData from '@/data/tech-trends.json';
+import featuresData from '@/data/upcoming-features.json';
+
 export function loadNewsData() {
   try {
-    const newsData = require('../data/news.json');
-    const trendsData = require('../data/tech-trends.json');
-    const featuresData = require('../data/upcoming-features.json');
-    
-    newsArticles = newsData;
-    techTrends = trendsData;
-    upcomingFeatures = featuresData;
-    
+    newsArticles = newsData as NewsArticle[];
+    techTrends = trendsData as TechTrend[];
+    upcomingFeatures = featuresData as UpcomingFeature[];
     return { newsArticles, techTrends, upcomingFeatures };
   } catch (error) {
     console.error('加载数据失败:', error);

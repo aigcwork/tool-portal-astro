@@ -1,6 +1,6 @@
-import type { MiddlewareResponseHandler } from 'astro';
+import type { MiddlewareHandler } from 'astro';
 
-export const onRequest: MiddlewareResponseHandler = async (context, next) => {
+export const onRequest: MiddlewareHandler = async (context, next) => {
   const { request } = context;
   const pathname = new URL(request.url).pathname;
   

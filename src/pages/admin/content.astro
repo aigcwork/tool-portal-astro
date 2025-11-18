@@ -118,7 +118,7 @@ if (Astro.request.method === 'POST') {
                 技术趋势管理
               </h2>
               <button 
-                onclick="showTrendForm()" 
+                id="showTrendBtn"
                 class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
               >
                 ➕ 添加趋势
@@ -214,13 +214,13 @@ if (Astro.request.method === 'POST') {
                   >
                     保存趋势
                   </button>
-                  <button 
-                    type="button"
-                    onclick="hideTrendForm()"
-                    class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-lg font-medium transition-colors"
-                  >
-                    取消
-                  </button>
+                    <button 
+                      type="button"
+                      id="cancelTrendBtn"
+                      class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-lg font-medium transition-colors"
+                    >
+                      取消
+                    </button>
                 </div>
               </form>
             </div>
@@ -283,7 +283,8 @@ if (Astro.request.method === 'POST') {
                       <td class="px-6 py-4 whitespace-nowrap text-sm">
                         <div class="flex gap-2">
                           <button 
-                            onclick={`editTrend(${JSON.stringify(trend)})`}
+                            class="edit-trend-btn"
+                            data-trend={JSON.stringify(trend)}
                             class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
                           >
                             编辑
@@ -315,7 +316,7 @@ if (Astro.request.method === 'POST') {
                 即将推出功能管理
               </h2>
               <button 
-                onclick="showFeatureForm()" 
+                id="showFeatureBtn"
                 class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
               >
                 ➕ 添加功能
@@ -411,13 +412,13 @@ if (Astro.request.method === 'POST') {
                   >
                     保存功能
                   </button>
-                  <button 
-                    type="button"
-                    onclick="hideFeatureForm()"
-                    class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-lg font-medium transition-colors"
-                  >
-                    取消
-                  </button>
+                    <button 
+                      type="button"
+                      id="cancelFeatureBtn"
+                      class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-lg font-medium transition-colors"
+                    >
+                      取消
+                    </button>
                 </div>
               </form>
             </div>
@@ -480,7 +481,8 @@ if (Astro.request.method === 'POST') {
                       <td class="px-6 py-4 whitespace-nowrap text-sm">
                         <div class="flex gap-2">
                           <button 
-                            onclick={`editFeature(${JSON.stringify(feature)})`}
+                            class="edit-feature-btn"
+                            data-feature={JSON.stringify(feature)}
                             class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
                           >
                             编辑
@@ -510,16 +512,54 @@ if (Astro.request.method === 'POST') {
   </main>
 
   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const trendBtn = document.getElementById('showTrendBtn');
+      trendBtn?.addEventListener('click', () => showTrendForm());
+      const featureBtn = document.getElementById('showFeatureBtn');
+      featureBtn?.addEventListener('click', () => showFeatureForm());
+
+      document.querySelectorAll('.edit-trend-btn').forEach((el) => {
+        el.addEventListener('click', (e) => {
+          const target = e.currentTarget as HTMLElement;
+          const json = target.getAttribute('data-trend');
+          if (json) {
+            try {
+              const data = JSON.parse(json);
+              editTrend(data);
+            } catch {}
+          }
+        });
+      });
+
+      document.querySelectorAll('.edit-feature-btn').forEach((el) => {
+        el.addEventListener('click', (e) => {
+          const target = e.currentTarget as HTMLElement;
+          const json = target.getAttribute('data-feature');
+          if (json) {
+            try {
+              const data = JSON.parse(json);
+              editFeature(data);
+            } catch {}
+          }
+        });
+      });
+
+      document.getElementById('cancelTrendBtn')?.addEventListener('click', () => hideTrendForm());
+      document.getElementById('cancelFeatureBtn')?.addEventListener('click', () => hideFeatureForm());
+    });
     function showTrendForm() {
-      document.getElementById('trendForm').classList.remove('hidden');
-      document.getElementById('trendFormTitle').textContent = '添加技术趋势';
-      document.getElementById('trendAction').value = 'create';
-      document.getElementById('trendId').value = '';
+      document.getElementById('trendForm')?.classList.remove('hidden');
+      const trendFormTitle = document.getElementById('trendFormTitle');
+      if (trendFormTitle) trendFormTitle.textContent = '添加技术趋势';
+      const trendAction = document.getElementById('trendAction') as HTMLInputElement | null;
+      if (trendAction) trendAction.value = 'create';
+      const trendId = document.getElementById('trendId') as HTMLInputElement | null;
+      if (trendId) trendId.value = '';
       resetTrendForm();
     }
     
     function hideTrendForm() {
-      document.getElementById('trendForm').classList.add('hidden');
+      document.getElementById('trendForm')?.classList.add('hidden');
       resetTrendForm();
     }
     
@@ -529,29 +569,39 @@ if (Astro.request.method === 'POST') {
     }
     
     function editTrend(trend: any) {
-      document.getElementById('trendForm').classList.remove('hidden');
-      document.getElementById('trendFormTitle').textContent = '编辑技术趋势';
-      document.getElementById('trendAction').value = 'update';
-      document.getElementById('trendId').value = trend.id;
+      document.getElementById('trendForm')?.classList.remove('hidden');
+      const trendFormTitle = document.getElementById('trendFormTitle');
+      if (trendFormTitle) trendFormTitle.textContent = '编辑技术趋势';
+      const trendAction = document.getElementById('trendAction') as HTMLInputElement | null;
+      if (trendAction) trendAction.value = 'update';
+      const trendId = document.getElementById('trendId') as HTMLInputElement | null;
+      if (trendId) trendId.value = String(trend.id);
       
-      // 填充表单数据
-      (document.getElementById('trendTitle') as HTMLInputElement).value = trend.title;
-      (document.getElementById('trendSummary') as HTMLTextAreaElement).value = trend.summary;
-      (document.getElementById('trendDirection') as HTMLSelectElement).value = trend.trend;
-      (document.getElementById('trendImpact') as HTMLSelectElement).value = trend.impact;
-      (document.getElementById('trendCategory') as HTMLInputElement).value = trend.category;
+      const trendTitle = document.getElementById('trendTitle') as HTMLInputElement | null;
+      if (trendTitle) trendTitle.value = trend.title;
+      const trendSummary = document.getElementById('trendSummary') as HTMLTextAreaElement | null;
+      if (trendSummary) trendSummary.value = trend.summary;
+      const trendDirection = document.getElementById('trendDirection') as HTMLSelectElement | null;
+      if (trendDirection) trendDirection.value = trend.trend;
+      const trendImpact = document.getElementById('trendImpact') as HTMLSelectElement | null;
+      if (trendImpact) trendImpact.value = trend.impact;
+      const trendCategory = document.getElementById('trendCategory') as HTMLInputElement | null;
+      if (trendCategory) trendCategory.value = trend.category;
     }
     
     function showFeatureForm() {
-      document.getElementById('featureForm').classList.remove('hidden');
-      document.getElementById('featureFormTitle').textContent = '添加新功能';
-      document.getElementById('featureAction').value = 'create';
-      document.getElementById('featureId').value = '';
+      document.getElementById('featureForm')?.classList.remove('hidden');
+      const featureFormTitle = document.getElementById('featureFormTitle');
+      if (featureFormTitle) featureFormTitle.textContent = '添加新功能';
+      const featureAction = document.getElementById('featureAction') as HTMLInputElement | null;
+      if (featureAction) featureAction.value = 'create';
+      const featureId = document.getElementById('featureId') as HTMLInputElement | null;
+      if (featureId) featureId.value = '';
       resetFeatureForm();
     }
     
     function hideFeatureForm() {
-      document.getElementById('featureForm').classList.add('hidden');
+      document.getElementById('featureForm')?.classList.add('hidden');
       resetFeatureForm();
     }
     
@@ -561,17 +611,24 @@ if (Astro.request.method === 'POST') {
     }
     
     function editFeature(feature: any) {
-      document.getElementById('featureForm').classList.remove('hidden');
-      document.getElementById('featureFormTitle').textContent = '编辑功能';
-      document.getElementById('featureAction').value = 'update';
-      document.getElementById('featureId').value = feature.id;
+      document.getElementById('featureForm')?.classList.remove('hidden');
+      const featureFormTitle = document.getElementById('featureFormTitle');
+      if (featureFormTitle) featureFormTitle.textContent = '编辑功能';
+      const featureAction = document.getElementById('featureAction') as HTMLInputElement | null;
+      if (featureAction) featureAction.value = 'update';
+      const featureId = document.getElementById('featureId') as HTMLInputElement | null;
+      if (featureId) featureId.value = String(feature.id);
       
-      // 填充表单数据
-      (document.getElementById('featureTitle') as HTMLInputElement).value = feature.title;
-      (document.getElementById('featureDescription') as HTMLTextAreaElement).value = feature.description;
-      (document.getElementById('featureStatus') as HTMLSelectElement).value = feature.status;
-      (document.getElementById('featurePriority') as HTMLSelectElement).value = feature.priority;
-      (document.getElementById('featureExpectedDate') as HTMLInputElement).value = feature.expectedDate;
+      const featureTitle = document.getElementById('featureTitle') as HTMLInputElement | null;
+      if (featureTitle) featureTitle.value = feature.title;
+      const featureDescription = document.getElementById('featureDescription') as HTMLTextAreaElement | null;
+      if (featureDescription) featureDescription.value = feature.description;
+      const featureStatus = document.getElementById('featureStatus') as HTMLSelectElement | null;
+      if (featureStatus) featureStatus.value = feature.status;
+      const featurePriority = document.getElementById('featurePriority') as HTMLSelectElement | null;
+      if (featurePriority) featurePriority.value = feature.priority;
+      const featureExpectedDate = document.getElementById('featureExpectedDate') as HTMLInputElement | null;
+      if (featureExpectedDate) featureExpectedDate.value = feature.expectedDate;
     }
   </script>
 </Layout>

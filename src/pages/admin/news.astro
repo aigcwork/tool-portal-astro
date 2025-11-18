@@ -1,8 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getNewsArticles, createNewsArticle, updateNewsArticle, deleteNewsArticle } from '../utils/newsManager';
+import type { NewsArticle } from '@/utils/newsManager';
+import { getNewsArticles, createNewsArticle, updateNewsArticle, deleteNewsArticle } from '@/utils/newsManager';
 
-const newsArticles = getNewsArticles();
+const newsArticles: NewsArticle[] = getNewsArticles();
 
 // Handle form submissions
 if (Astro.request.method === 'POST') {
@@ -101,7 +102,7 @@ if (Astro.request.method === 'POST') {
           <!-- Action Buttons -->
           <div class="flex flex-wrap gap-4 mb-8">
             <button 
-              onclick="showCreateForm()" 
+              id="showCreateBtn"
               class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-colors"
             >
               ➕ 新建文章
@@ -290,7 +291,7 @@ if (Astro.request.method === 'POST') {
                 </button>
                 <button 
                   type="button"
-                  onclick="hideForm()"
+                  id="cancelArticleBtn"
                   class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-lg font-medium transition-colors"
                 >
                   取消
@@ -364,12 +365,13 @@ if (Astro.request.method === 'POST') {
                       <td class="px-6 py-4 whitespace-nowrap text-sm">
                         <div class="flex gap-2">
                           <button 
-                            onclick={`editArticle(${JSON.stringify(article)})`}
+                            class="edit-btn"
+                            data-article={JSON.stringify(article)}
                             class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
                           >
                             编辑
                           </button>
-                          <form method="POST" class="inline" onsubmit="return confirm('确定要删除这篇文章吗？')">
+                          <form method="POST" class="inline delete-form">
                             <input type="hidden" name="action" value="delete" />
                             <input type="hidden" name="id" value={article.id} />
                             <button 
@@ -393,18 +395,51 @@ if (Astro.request.method === 'POST') {
   </main>
 
   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const showBtn = document.getElementById('showCreateBtn');
+      showBtn?.addEventListener('click', () => showCreateForm());
+
+      document.querySelectorAll('.edit-btn').forEach((el) => {
+        el.addEventListener('click', (e) => {
+          const target = e.currentTarget as HTMLElement;
+          const json = target.getAttribute('data-article');
+          if (json) {
+            try {
+              const article = JSON.parse(json);
+              editArticle(article);
+            } catch {}
+          }
+        });
+      });
+
+      document.querySelectorAll('.delete-form').forEach((formEl) => {
+        formEl.addEventListener('submit', (e) => {
+          if (!confirm('确定要删除这篇文章吗？')) {
+            e.preventDefault();
+          }
+        });
+      });
+    });
     function showCreateForm() {
-      document.getElementById('articleForm').classList.remove('hidden');
-      document.getElementById('formTitle').textContent = '新建文章';
-      document.getElementById('formAction').value = 'create';
-      document.getElementById('articleId').value = '';
+      document.getElementById('articleForm')?.classList.remove('hidden');
+      const formTitle = document.getElementById('formTitle');
+      if (formTitle) formTitle.textContent = '新建文章';
+      const formAction = document.getElementById('formAction') as HTMLInputElement | null;
+      if (formAction) formAction.value = 'create';
+      const articleId = document.getElementById('articleId') as HTMLInputElement | null;
+      if (articleId) articleId.value = '';
       resetForm();
     }
     
     function hideForm() {
-      document.getElementById('articleForm').classList.add('hidden');
+      document.getElementById('articleForm')?.classList.add('hidden');
       resetForm();
     }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      const cancelBtn = document.getElementById('cancelArticleBtn');
+      cancelBtn?.addEventListener('click', () => hideForm());
+    });
     
     function resetForm() {
       const form = document.querySelector('#articleForm form') as HTMLFormElement;
@@ -415,23 +450,36 @@ if (Astro.request.method === 'POST') {
     }
     
     function editArticle(article: any) {
-      document.getElementById('articleForm').classList.remove('hidden');
-      document.getElementById('formTitle').textContent = '编辑文章';
-      document.getElementById('formAction').value = 'update';
-      document.getElementById('articleId').value = article.id;
-      
-      // 填充表单数据
-      (document.getElementById('title') as HTMLInputElement).value = article.title;
-      (document.getElementById('summary') as HTMLTextAreaElement).value = article.summary;
-      (document.getElementById('content') as HTMLTextAreaElement).value = article.content;
-      (document.getElementById('category') as HTMLSelectElement).value = article.category;
-      (document.getElementById('tags') as HTMLInputElement).value = article.tags.join(', ');
-      (document.getElementById('date') as HTMLInputElement).value = article.date;
-      (document.getElementById('readTime') as HTMLInputElement).value = article.readTime;
-      (document.getElementById('featured') as HTMLSelectElement).value = article.featured.toString();
-      (document.getElementById('image') as HTMLInputElement).value = article.image;
-      (document.getElementById('authorName') as HTMLInputElement).value = article.author.name;
-      (document.getElementById('authorAvatar') as HTMLInputElement).value = article.author.avatar;
+      document.getElementById('articleForm')?.classList.remove('hidden');
+      const formTitle = document.getElementById('formTitle');
+      if (formTitle) formTitle.textContent = '编辑文章';
+      const formAction = document.getElementById('formAction') as HTMLInputElement | null;
+      if (formAction) formAction.value = 'update';
+      const articleId = document.getElementById('articleId') as HTMLInputElement | null;
+      if (articleId) articleId.value = String(article.id);
+
+      const title = document.getElementById('title') as HTMLInputElement | null;
+      if (title) title.value = article.title;
+      const summary = document.getElementById('summary') as HTMLTextAreaElement | null;
+      if (summary) summary.value = article.summary;
+      const content = document.getElementById('content') as HTMLTextAreaElement | null;
+      if (content) content.value = article.content;
+      const category = document.getElementById('category') as HTMLSelectElement | null;
+      if (category) category.value = article.category;
+      const tags = document.getElementById('tags') as HTMLInputElement | null;
+      if (tags) tags.value = article.tags.join(', ');
+      const date = document.getElementById('date') as HTMLInputElement | null;
+      if (date) date.value = article.date;
+      const readTime = document.getElementById('readTime') as HTMLInputElement | null;
+      if (readTime) readTime.value = article.readTime;
+      const featured = document.getElementById('featured') as HTMLSelectElement | null;
+      if (featured) featured.value = String(article.featured);
+      const image = document.getElementById('image') as HTMLInputElement | null;
+      if (image) image.value = article.image;
+      const authorName = document.getElementById('authorName') as HTMLInputElement | null;
+      if (authorName) authorName.value = article.author.name;
+      const authorAvatar = document.getElementById('authorAvatar') as HTMLInputElement | null;
+      if (authorAvatar) authorAvatar.value = article.author.avatar;
     }
     
     // 设置默认日期
