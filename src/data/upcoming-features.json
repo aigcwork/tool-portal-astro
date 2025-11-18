@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "title": "批量工具处理功能",
+    "description": "支持同时处理多个文件和批量操作",
+    "status": "开发中",
+    "expectedDate": "2024年Q1",
+    "priority": "high"
+  },
+  {
+    "id": 2,
+    "title": "团队协作工作空间",
+    "description": "支持团队共享工具配置和使用记录",
+    "status": "规划中",
+    "expectedDate": "2024年Q2",
+    "priority": "medium"
+  },
+  {
+    "id": 3,
+    "title": "API接口开放",
+    "description": "提供开发者API，支持第三方集成",
+    "status": "测试中",
+    "expectedDate": "2024年Q1",
+    "priority": "high"
+  },
+  {
+    "id": 4,
+    "title": "离线版本工具",
+    "description": "支持无网络环境下的工具使用",
+    "status": "调研中",
+    "expectedDate": "2024年Q3",
+    "priority": "medium"
+  }
+]

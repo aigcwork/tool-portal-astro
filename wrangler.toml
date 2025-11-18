@@ -1,3 +1,15 @@
 name = "tool-portal-astro"
 pages_build_output_dir = "dist"
 compatibility_date = "2024-11-17"
+
+[env.production.vars]
+ENABLE_ADMIN = "true"
+ADMIN_PASSWORD = "admin123"
+SITE_URL = "https://tool-portal-astro.pages.dev"
+SITE_NAME = "工具门户网站"
+
+[env.development.vars]
+ENABLE_ADMIN = "true"
+ADMIN_PASSWORD = "admin123"
+SITE_URL = "http://localhost:4321"
+SITE_NAME = "工具门户网站"

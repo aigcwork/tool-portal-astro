@@ -1,0 +1,446 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getNewsArticles, createNewsArticle, updateNewsArticle, deleteNewsArticle } from '../utils/newsManager';
+
+const newsArticles = getNewsArticles();
+
+// Handle form submissions
+if (Astro.request.method === 'POST') {
+  const formData = await Astro.request.formData();
+  const action = formData.get('action');
+  
+  if (action === 'create') {
+    const newArticle = {
+      title: formData.get('title') as string,
+      summary: formData.get('summary') as string,
+      content: formData.get('content') as string,
+      category: formData.get('category') as string,
+      tags: (formData.get('tags') as string).split(',').map(tag => tag.trim()),
+      date: formData.get('date') as string,
+      readTime: formData.get('readTime') as string,
+      featured: formData.get('featured') === 'true',
+      image: formData.get('image') as string,
+      author: {
+        name: formData.get('authorName') as string,
+        avatar: formData.get('authorAvatar') as string
+      }
+    };
+    createNewsArticle(newArticle);
+  } else if (action === 'update') {
+    const id = parseInt(formData.get('id') as string);
+    const updates = {
+      title: formData.get('title') as string,
+      summary: formData.get('summary') as string,
+      content: formData.get('content') as string,
+      category: formData.get('category') as string,
+      tags: (formData.get('tags') as string).split(',').map(tag => tag.trim()),
+      date: formData.get('date') as string,
+      readTime: formData.get('readTime') as string,
+      featured: formData.get('featured') === 'true',
+      image: formData.get('image') as string,
+      author: {
+        name: formData.get('authorName') as string,
+        avatar: formData.get('authorAvatar') as string
+      }
+    };
+    updateNewsArticle(id, updates);
+  } else if (action === 'delete') {
+    const id = parseInt(formData.get('id') as string);
+    deleteNewsArticle(id);
+  }
+}
+---
+
+<Layout title="资讯管理 - 工具网站">
+  <!-- Navigation Bar -->
+  <nav class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-8">
+          <div class="text-xl font-bold text-gray-900 dark:text-white">管理后台</div>
+          <div class="flex space-x-4">
+            <a href="/admin/tools" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium px-3 py-2 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700">
+              🔧 工具管理
+            </a>
+            <a href="/admin/news" class="text-blue-600 dark:text-blue-400 font-medium px-3 py-2 rounded-md bg-blue-50 dark:bg-blue-900/20">
+              📰 资讯管理
+            </a>
+            <a href="/admin/content" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium px-3 py-2 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700">
+              📈 内容管理
+            </a>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <a href="/" target="_blank" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+            🌐 查看网站
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <main class="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <!-- Header -->
+    <section class="bg-gradient-to-br from-indigo-600 to-blue-700 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-3xl md:text-4xl font-bold mb-4">
+            资讯文章管理
+          </h1>
+          <p class="text-lg opacity-90">
+            管理网站资讯文章，支持增删改操作
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Management Panel -->
+    <section class="py-8">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap gap-4 mb-8">
+            <button 
+              onclick="showCreateForm()" 
+              class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-colors"
+            >
+              ➕ 新建文章
+            </button>
+            <a 
+              href="/news" 
+              target="_blank"
+              class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-medium transition-colors inline-flex items-center"
+            >
+              🌐 查看前台
+            </a>
+          </div>
+
+          <!-- Create/Edit Form -->
+          <div id="articleForm" class="hidden bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 mb-8">
+            <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">
+              <span id="formTitle">新建文章</span>
+            </h2>
+            <form method="POST" class="space-y-4">
+              <input type="hidden" name="action" id="formAction" value="create" />
+              <input type="hidden" name="id" id="articleId" />
+              
+              <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    文章标题
+                  </label>
+                  <input 
+                    type="text" 
+                    name="title" 
+                    id="title"
+                    required
+                    class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  />
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    文章分类
+                  </label>
+                  <select 
+                    name="category" 
+                    id="category"
+                    required
+                    class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  >
+                    <option value="产品更新">产品更新</option>
+                    <option value="数据统计">数据统计</option>
+                    <option value="安全公告">安全公告</option>
+                    <option value="技术更新">技术更新</option>
+                    <option value="社区活动">社区活动</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  文章摘要
+                </label>
+                <textarea 
+                  name="summary" 
+                  id="summary"
+                  rows="2"
+                  required
+                  class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                ></textarea>
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  文章内容
+                </label>
+                <textarea 
+                  name="content" 
+                  id="content"
+                  rows="6"
+                  required
+                  class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                ></textarea>
+              </div>
+              
+              <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    标签 (用逗号分隔)
+                  </label>
+                  <input 
+                    type="text" 
+                    name="tags" 
+                    id="tags"
+                    placeholder="AI, 推荐系统, 个性化"
+                    class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  />
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    阅读时间
+                  </label>
+                  <input 
+                    type="text" 
+                    name="readTime" 
+                    id="readTime"
+                    placeholder="3分钟"
+                    class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  />
+                </div>
+              </div>
+              
+              <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    发布日期
+                  </label>
+                  <input 
+                    type="date" 
+                    name="date" 
+                    id="date"
+                    required
+                    class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  />
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    特色文章
+                  </label>
+                  <select 
+                    name="featured" 
+                    id="featured"
+                    class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  >
+                    <option value="false">否</option>
+                    <option value="true">是</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  文章图片URL
+                </label>
+                <input 
+                  type="url" 
+                  name="image" 
+                  id="image"
+                  placeholder="https://example.com/image.jpg"
+                  class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                />
+              </div>
+              
+              <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    作者姓名
+                  </label>
+                  <input 
+                    type="text" 
+                    name="authorName" 
+                    id="authorName"
+                    required
+                    class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  />
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    作者头像
+                  </label>
+                  <input 
+                    type="text" 
+                    name="authorAvatar" 
+                    id="authorAvatar"
+                    placeholder="👨‍💻"
+                    class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  />
+                </div>
+              </div>
+              
+              <div class="flex gap-4 pt-4">
+                <button 
+                  type="submit"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-colors"
+                >
+                  保存文章
+                </button>
+                <button 
+                  type="button"
+                  onclick="hideForm()"
+                  class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-lg font-medium transition-colors"
+                >
+                  取消
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Articles List -->
+          <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+            <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+              <h2 class="text-xl font-bold text-gray-900 dark:text-white">
+                文章列表 ({newsArticles.length})
+              </h2>
+            </div>
+            
+            <div class="overflow-x-auto">
+              <table class="w-full">
+                <thead class="bg-gray-50 dark:bg-gray-700">
+                  <tr>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                      ID
+                    </th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                      标题
+                    </th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                      分类
+                    </th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                      日期
+                    </th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                      特色
+                    </th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                      操作
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                  {newsArticles.map((article) => (
+                    <tr>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">
+                        {article.id}
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-900 dark:text-gray-100 max-w-xs truncate">
+                        {article.title}
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <span class={`px-2 py-1 rounded-full text-xs font-medium ${
+                          article.category === '产品更新' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' :
+                          article.category === '数据统计' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' :
+                          article.category === '安全公告' ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200' :
+                          article.category === '技术更新' ? 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200' :
+                          'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
+                        }`}>
+                          {article.category}
+                        </span>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">
+                        {article.date}
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        {article.featured ? (
+                          <span class="text-yellow-500">⭐</span>
+                        ) : (
+                          <span class="text-gray-400">○</span>
+                        )}
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm">
+                        <div class="flex gap-2">
+                          <button 
+                            onclick={`editArticle(${JSON.stringify(article)})`}
+                            class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+                          >
+                            编辑
+                          </button>
+                          <form method="POST" class="inline" onsubmit="return confirm('确定要删除这篇文章吗？')">
+                            <input type="hidden" name="action" value="delete" />
+                            <input type="hidden" name="id" value={article.id} />
+                            <button 
+                              type="submit"
+                              class="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300"
+                            >
+                              删除
+                            </button>
+                          </form>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function showCreateForm() {
+      document.getElementById('articleForm').classList.remove('hidden');
+      document.getElementById('formTitle').textContent = '新建文章';
+      document.getElementById('formAction').value = 'create';
+      document.getElementById('articleId').value = '';
+      resetForm();
+    }
+    
+    function hideForm() {
+      document.getElementById('articleForm').classList.add('hidden');
+      resetForm();
+    }
+    
+    function resetForm() {
+      const form = document.querySelector('#articleForm form') as HTMLFormElement;
+      form.reset();
+      // 设置默认日期为今天
+      const today = new Date().toISOString().split('T')[0];
+      (document.getElementById('date') as HTMLInputElement).value = today;
+    }
+    
+    function editArticle(article: any) {
+      document.getElementById('articleForm').classList.remove('hidden');
+      document.getElementById('formTitle').textContent = '编辑文章';
+      document.getElementById('formAction').value = 'update';
+      document.getElementById('articleId').value = article.id;
+      
+      // 填充表单数据
+      (document.getElementById('title') as HTMLInputElement).value = article.title;
+      (document.getElementById('summary') as HTMLTextAreaElement).value = article.summary;
+      (document.getElementById('content') as HTMLTextAreaElement).value = article.content;
+      (document.getElementById('category') as HTMLSelectElement).value = article.category;
+      (document.getElementById('tags') as HTMLInputElement).value = article.tags.join(', ');
+      (document.getElementById('date') as HTMLInputElement).value = article.date;
+      (document.getElementById('readTime') as HTMLInputElement).value = article.readTime;
+      (document.getElementById('featured') as HTMLSelectElement).value = article.featured.toString();
+      (document.getElementById('image') as HTMLInputElement).value = article.image;
+      (document.getElementById('authorName') as HTMLInputElement).value = article.author.name;
+      (document.getElementById('authorAvatar') as HTMLInputElement).value = article.author.avatar;
+    }
+    
+    // 设置默认日期
+    document.addEventListener('DOMContentLoaded', function() {
+      const today = new Date().toISOString().split('T')[0];
+      const dateInput = document.getElementById('date') as HTMLInputElement;
+      if (dateInput && !dateInput.value) {
+        dateInput.value = today;
+      }
+    });
+  </script>
+</Layout>

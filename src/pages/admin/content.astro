@@ -1,0 +1,577 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { 
+  getTechTrends, 
+  createTechTrend, 
+  updateTechTrend, 
+  deleteTechTrend,
+  getUpcomingFeatures,
+  createUpcomingFeature,
+  updateUpcomingFeature,
+  deleteUpcomingFeature
+} from '../../utils/newsManager';
+
+const techTrends = getTechTrends();
+const upcomingFeatures = getUpcomingFeatures();
+
+// Handle form submissions
+if (Astro.request.method === 'POST') {
+  const formData = await Astro.request.formData();
+  const action = formData.get('action');
+  const type = formData.get('type');
+  
+  if (type === 'trend') {
+    if (action === 'create') {
+      const newTrend = {
+        title: formData.get('title') as string,
+        summary: formData.get('summary') as string,
+        trend: formData.get('trend') as 'up' | 'down' | 'stable',
+        impact: formData.get('impact') as 'high' | 'medium' | 'low',
+        category: formData.get('category') as string
+      };
+      createTechTrend(newTrend);
+    } else if (action === 'update') {
+      const id = parseInt(formData.get('id') as string);
+      const updates = {
+        title: formData.get('title') as string,
+        summary: formData.get('summary') as string,
+        trend: formData.get('trend') as 'up' | 'down' | 'stable',
+        impact: formData.get('impact') as 'high' | 'medium' | 'low',
+        category: formData.get('category') as string
+      };
+      updateTechTrend(id, updates);
+    } else if (action === 'delete') {
+      const id = parseInt(formData.get('id') as string);
+      deleteTechTrend(id);
+    }
+  } else if (type === 'feature') {
+    if (action === 'create') {
+      const newFeature = {
+        title: formData.get('title') as string,
+        description: formData.get('description') as string,
+        status: formData.get('status') as '开发中' | '测试中' | '规划中' | '调研中',
+        expectedDate: formData.get('expectedDate') as string,
+        priority: formData.get('priority') as 'high' | 'medium'
+      };
+      createUpcomingFeature(newFeature);
+    } else if (action === 'update') {
+      const id = parseInt(formData.get('id') as string);
+      const updates = {
+        title: formData.get('title') as string,
+        description: formData.get('description') as string,
+        status: formData.get('status') as '开发中' | '测试中' | '规划中' | '调研中',
+        expectedDate: formData.get('expectedDate') as string,
+        priority: formData.get('priority') as 'high' | 'medium'
+      };
+      updateUpcomingFeature(id, updates);
+    } else if (action === 'delete') {
+      const id = parseInt(formData.get('id') as string);
+      deleteUpcomingFeature(id);
+    }
+  }
+}
+---
+
+<Layout title="内容管理 - 工具网站">
+  <main class="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <!-- Header -->
+    <section class="bg-gradient-to-br from-indigo-600 to-blue-700 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-3xl md:text-4xl font-bold mb-4">
+            内容管理系统
+          </h1>
+          <p class="text-lg opacity-90">
+            管理技术趋势和即将推出的功能
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="py-6 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-wrap gap-4">
+          <a 
+            href="/admin/news" 
+            class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors"
+          >
+            📰 资讯文章
+          </a>
+          <span class="text-gray-400">|</span>
+          <span class="text-blue-600 dark:text-blue-400 font-medium">
+            📈 技术趋势
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Management Panel -->
+    <section class="py-8">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto space-y-8">
+          
+          <!-- Tech Trends Section -->
+          <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+            <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+              <h2 class="text-xl font-bold text-gray-900 dark:text-white">
+                技术趋势管理
+              </h2>
+              <button 
+                onclick="showTrendForm()" 
+                class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+              >
+                ➕ 添加趋势
+              </button>
+            </div>
+            
+            <!-- Trend Form -->
+            <div id="trendForm" class="hidden px-6 py-4 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700">
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                <span id="trendFormTitle">添加技术趋势</span>
+              </h3>
+              <form method="POST" class="grid md:grid-cols-2 gap-4">
+                <input type="hidden" name="action" id="trendAction" value="create" />
+                <input type="hidden" name="type" value="trend" />
+                <input type="hidden" name="id" id="trendId" />
+                
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    趋势标题
+                  </label>
+                  <input 
+                    type="text" 
+                    name="title" 
+                    id="trendTitle"
+                    required
+                    class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  />
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    分类
+                  </label>
+                  <input 
+                    type="text" 
+                    name="category" 
+                    id="trendCategory"
+                    placeholder="AI技术, 开发趋势, 安全工具..."
+                    required
+                    class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  />
+                </div>
+                
+                <div class="md:col-span-2">
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    趋势描述
+                  </label>
+                  <textarea 
+                    name="summary" 
+                    id="trendSummary"
+                    rows="2"
+                    required
+                    class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  ></textarea>
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    趋势方向
+                  </label>
+                  <select 
+                    name="trend" 
+                    id="trendDirection"
+                    required
+                    class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  >
+                    <option value="up">📈 上升</option>
+                    <option value="down">📉 下降</option>
+                    <option value="stable">➡️ 稳定</option>
+                  </select>
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    影响程度
+                  </label>
+                  <select 
+                    name="impact" 
+                    id="trendImpact"
+                    required
+                    class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  >
+                    <option value="high">🔴 高影响</option>
+                    <option value="medium">🟡 中影响</option>
+                    <option value="low">🟢 低影响</option>
+                  </select>
+                </div>
+                
+                <div class="md:col-span-2 flex gap-4 pt-2">
+                  <button 
+                    type="submit"
+                    class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-colors"
+                  >
+                    保存趋势
+                  </button>
+                  <button 
+                    type="button"
+                    onclick="hideTrendForm()"
+                    class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-lg font-medium transition-colors"
+                  >
+                    取消
+                  </button>
+                </div>
+              </form>
+            </div>
+            
+            <!-- Trends List -->
+            <div class="overflow-x-auto">
+              <table class="w-full">
+                <thead class="bg-gray-50 dark:bg-gray-700">
+                  <tr>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                      ID
+                    </th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                      标题
+                    </th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                      分类
+                    </th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                      趋势
+                    </th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                      影响
+                    </th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                      操作
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                  {techTrends.map((trend) => (
+                    <tr>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">
+                        {trend.id}
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-900 dark:text-gray-100 max-w-xs truncate">
+                        {trend.title}
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">
+                        {trend.category}
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <span class={`px-2 py-1 rounded-full text-xs font-medium ${
+                          trend.trend === 'up' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' :
+                          trend.trend === 'down' ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200' :
+                          'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300'
+                        }`}>
+                          {trend.trend === 'up' ? '📈 上升' : trend.trend === 'down' ? '📉 下降' : '➡️ 稳定'}
+                        </span>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <span class={`px-2 py-1 rounded-full text-xs font-medium ${
+                          trend.impact === 'high' ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200' :
+                          trend.impact === 'medium' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200' :
+                          'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+                        }`}>
+                          {trend.impact === 'high' ? '🔴 高' : trend.impact === 'medium' ? '🟡 中' : '🟢 低'}
+                        </span>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm">
+                        <div class="flex gap-2">
+                          <button 
+                            onclick={`editTrend(${JSON.stringify(trend)})`}
+                            class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+                          >
+                            编辑
+                          </button>
+                          <form method="POST" class="inline" onsubmit="return confirm('确定要删除这个趋势吗？')">
+                            <input type="hidden" name="action" value="delete" />
+                            <input type="hidden" name="type" value="trend" />
+                            <input type="hidden" name="id" value={trend.id} />
+                            <button 
+                              type="submit"
+                              class="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300"
+                            >
+                              删除
+                            </button>
+                          </form>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          <!-- Upcoming Features Section -->
+          <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+            <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+              <h2 class="text-xl font-bold text-gray-900 dark:text-white">
+                即将推出功能管理
+              </h2>
+              <button 
+                onclick="showFeatureForm()" 
+                class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+              >
+                ➕ 添加功能
+              </button>
+            </div>
+            
+            <!-- Feature Form -->
+            <div id="featureForm" class="hidden px-6 py-4 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700">
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                <span id="featureFormTitle">添加新功能</span>
+              </h3>
+              <form method="POST" class="grid md:grid-cols-2 gap-4">
+                <input type="hidden" name="action" id="featureAction" value="create" />
+                <input type="hidden" name="type" value="feature" />
+                <input type="hidden" name="id" id="featureId" />
+                
+                <div class="md:col-span-2">
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    功能标题
+                  </label>
+                  <input 
+                    type="text" 
+                    name="title" 
+                    id="featureTitle"
+                    required
+                    class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  />
+                </div>
+                
+                <div class="md:col-span-2">
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    功能描述
+                  </label>
+                  <textarea 
+                    name="description" 
+                    id="featureDescription"
+                    rows="2"
+                    required
+                    class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  ></textarea>
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    开发状态
+                  </label>
+                  <select 
+                    name="status" 
+                    id="featureStatus"
+                    required
+                    class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  >
+                    <option value="开发中">🔵 开发中</option>
+                    <option value="测试中">🟡 测试中</option>
+                    <option value="规划中">⚪ 规划中</option>
+                    <option value="调研中">🟣 调研中</option>
+                  </select>
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    优先级
+                  </label>
+                  <select 
+                    name="priority" 
+                    id="featurePriority"
+                    required
+                    class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  >
+                    <option value="high">🔴 高优先级</option>
+                    <option value="medium">🔵 普通优先级</option>
+                  </select>
+                </div>
+                
+                <div class="md:col-span-2">
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    预计时间
+                  </label>
+                  <input 
+                    type="text" 
+                    name="expectedDate" 
+                    id="featureExpectedDate"
+                    placeholder="2024年Q1"
+                    required
+                    class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  />
+                </div>
+                
+                <div class="md:col-span-2 flex gap-4 pt-2">
+                  <button 
+                    type="submit"
+                    class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-medium transition-colors"
+                  >
+                    保存功能
+                  </button>
+                  <button 
+                    type="button"
+                    onclick="hideFeatureForm()"
+                    class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-lg font-medium transition-colors"
+                  >
+                    取消
+                  </button>
+                </div>
+              </form>
+            </div>
+            
+            <!-- Features List -->
+            <div class="overflow-x-auto">
+              <table class="w-full">
+                <thead class="bg-gray-50 dark:bg-gray-700">
+                  <tr>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                      ID
+                    </th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                      功能标题
+                    </th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                      状态
+                    </th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                      预计时间
+                    </th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                      优先级
+                    </th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                      操作
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                  {upcomingFeatures.map((feature) => (
+                    <tr>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">
+                        {feature.id}
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-900 dark:text-gray-100 max-w-xs truncate">
+                        {feature.title}
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <span class={`px-2 py-1 rounded-full text-xs font-medium ${
+                          feature.status === '开发中' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' :
+                          feature.status === '测试中' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200' :
+                          feature.status === '规划中' ? 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300' :
+                          'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200'
+                        }`}>
+                          {feature.status}
+                        </span>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">
+                        {feature.expectedDate}
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <span class={`px-2 py-1 rounded-full text-xs font-medium ${
+                          feature.priority === 'high' ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200' :
+                          'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
+                        }`}>
+                          {feature.priority === 'high' ? '🔴 高' : '🔵 普通'}
+                        </span>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm">
+                        <div class="flex gap-2">
+                          <button 
+                            onclick={`editFeature(${JSON.stringify(feature)})`}
+                            class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+                          >
+                            编辑
+                          </button>
+                          <form method="POST" class="inline" onsubmit="return confirm('确定要删除这个功能吗？')">
+                            <input type="hidden" name="action" value="delete" />
+                            <input type="hidden" name="type" value="feature" />
+                            <input type="hidden" name="id" value={feature.id} />
+                            <button 
+                              type="submit"
+                              class="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300"
+                            >
+                              删除
+                            </button>
+                          </form>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function showTrendForm() {
+      document.getElementById('trendForm').classList.remove('hidden');
+      document.getElementById('trendFormTitle').textContent = '添加技术趋势';
+      document.getElementById('trendAction').value = 'create';
+      document.getElementById('trendId').value = '';
+      resetTrendForm();
+    }
+    
+    function hideTrendForm() {
+      document.getElementById('trendForm').classList.add('hidden');
+      resetTrendForm();
+    }
+    
+    function resetTrendForm() {
+      const form = document.querySelector('#trendForm form') as HTMLFormElement;
+      form.reset();
+    }
+    
+    function editTrend(trend: any) {
+      document.getElementById('trendForm').classList.remove('hidden');
+      document.getElementById('trendFormTitle').textContent = '编辑技术趋势';
+      document.getElementById('trendAction').value = 'update';
+      document.getElementById('trendId').value = trend.id;
+      
+      // 填充表单数据
+      (document.getElementById('trendTitle') as HTMLInputElement).value = trend.title;
+      (document.getElementById('trendSummary') as HTMLTextAreaElement).value = trend.summary;
+      (document.getElementById('trendDirection') as HTMLSelectElement).value = trend.trend;
+      (document.getElementById('trendImpact') as HTMLSelectElement).value = trend.impact;
+      (document.getElementById('trendCategory') as HTMLInputElement).value = trend.category;
+    }
+    
+    function showFeatureForm() {
+      document.getElementById('featureForm').classList.remove('hidden');
+      document.getElementById('featureFormTitle').textContent = '添加新功能';
+      document.getElementById('featureAction').value = 'create';
+      document.getElementById('featureId').value = '';
+      resetFeatureForm();
+    }
+    
+    function hideFeatureForm() {
+      document.getElementById('featureForm').classList.add('hidden');
+      resetFeatureForm();
+    }
+    
+    function resetFeatureForm() {
+      const form = document.querySelector('#featureForm form') as HTMLFormElement;
+      form.reset();
+    }
+    
+    function editFeature(feature: any) {
+      document.getElementById('featureForm').classList.remove('hidden');
+      document.getElementById('featureFormTitle').textContent = '编辑功能';
+      document.getElementById('featureAction').value = 'update';
+      document.getElementById('featureId').value = feature.id;
+      
+      // 填充表单数据
+      (document.getElementById('featureTitle') as HTMLInputElement).value = feature.title;
+      (document.getElementById('featureDescription') as HTMLTextAreaElement).value = feature.description;
+      (document.getElementById('featureStatus') as HTMLSelectElement).value = feature.status;
+      (document.getElementById('featurePriority') as HTMLSelectElement).value = feature.priority;
+      (document.getElementById('featureExpectedDate') as HTMLInputElement).value = feature.expectedDate;
+    }
+  </script>
+</Layout>
